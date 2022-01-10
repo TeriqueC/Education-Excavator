@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     private float player_ypos;
 
     private new Rigidbody2D rigidbody;
-    public GameObject projectile;
     //rigidbody allows physics to be aplied to gameobjects
+    public GameObject projectile;
 
     public void Awake()
     {
