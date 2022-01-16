@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mono.Data.Sqlite;
 
-public class QuestionGenerator : MonoBehaviour
+public class QuestionGenerator
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public void getQuestion(){
+        string dbName= "database.db";
         
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
