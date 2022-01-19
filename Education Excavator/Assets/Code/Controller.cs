@@ -13,6 +13,7 @@ public class Controller : MonoBehaviour
     void Start()
     {
         player.GetComponent<Player>();
+        //generator.createTable();
         setQuestion();
     }
 
