@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 public class Controller : MonoBehaviour
 {
     public Player player;
+    QuestionGenerator generator = new QuestionGenerator();
    
 
     // Start is called before the first frame update
     void Start()
     {
         player.GetComponent<Player>();
+        setQuestion();
     }
 
     // Update is called once per frame
@@ -19,6 +21,16 @@ public class Controller : MonoBehaviour
     {
         player.movement();
         player.shoot();
+    }
+
+    public void setQuestion(){
+        string question = generator.getQuestion();
+        Debug.Log(question);
+    }
+
+    public void pause()
+    {
+        
     }
 
     public void quitGame()
@@ -34,11 +46,6 @@ public class Controller : MonoBehaviour
     public void viewLeaderboard()
     {
         SceneManager.LoadScene(2);
-    }
-
-    public void pause()
-    {
-        
     }
 
 }
