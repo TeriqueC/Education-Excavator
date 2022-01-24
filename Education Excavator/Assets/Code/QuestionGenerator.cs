@@ -6,7 +6,7 @@ using System;
 
 public class QuestionGenerator
 {
-    string dbName = "URI= file: Test database";
+    string dbName = "URI=file:C:Education database.db";
     string sql;
     
     public void createTable(){
@@ -30,7 +30,7 @@ public class QuestionGenerator
         connection.Open();
         SqliteCommand Command = connection.CreateCommand();
 
-        sql = "SELECT * FROM Question";
+        sql = "SELECT question FROM Question WHERE question_id=1";
 
         Command.CommandText = sql;
         SqliteDataReader reader = Command.ExecuteReader();

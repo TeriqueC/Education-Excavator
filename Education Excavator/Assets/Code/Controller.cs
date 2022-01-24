@@ -7,12 +7,13 @@ public class Controller : MonoBehaviour
 {
     public Player player;
     QuestionGenerator generator = new QuestionGenerator();
-   
+    string dbfile;
 
     // Start is called before the first frame update
     void Start()
     {
         player.GetComponent<Player>();
+        
         //generator.createTable();
         setQuestion();
     }
