@@ -9,11 +9,6 @@ public class Controller : MonoBehaviour
         
     }
 
-    public void pause()
-    {
-        
-    }
-
     public void quitGame()
     {
         Application.Quit();

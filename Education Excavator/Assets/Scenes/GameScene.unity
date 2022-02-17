@@ -518,7 +518,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 232883058}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1701916549}
+        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
+        m_MethodName: resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &232883058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,8 +731,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2039488519}
-        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
+      - m_Target: {fileID: 1701916549}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: pause
         m_Mode: 1
         m_Arguments:
@@ -824,7 +836,7 @@ Transform:
   m_LocalScale: {x: 19.7, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &447522594
 GameObject:
@@ -1084,7 +1096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &597442255
 Transform:
   m_ObjectHideFlags: 0
@@ -1237,7 +1249,7 @@ Transform:
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &637307449
 BoxCollider2D:
@@ -1381,7 +1393,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 857705623}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2039488518}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &857705623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1887,7 +1911,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1292491316}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2039488519}
+        m_TargetAssemblyTypeName: Controller, Assembly-CSharp
+        m_MethodName: quitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1292491316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2720,6 +2756,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 637307450}
+  canvas: {fileID: 1616513083}
+  PauseMenu: {fileID: 597442254}
+  questionPopup: {fileID: 1754918943}
 --- !u!4 &1701916550
 Transform:
   m_ObjectHideFlags: 0
@@ -2750,7 +2789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1754918944
 Transform:
   m_ObjectHideFlags: 0
@@ -2873,7 +2912,7 @@ Transform:
   m_LocalScale: {x: 20, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1953456917
 PrefabInstance:
