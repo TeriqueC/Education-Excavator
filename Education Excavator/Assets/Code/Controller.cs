@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
 {
-    public void setQuestion(){
-        
+    public void mainMenu(){
+        SceneManager.LoadScene(0);
     }
 
     public void quitGame()
@@ -17,6 +17,7 @@ public class Controller : MonoBehaviour
     public void startGame()
     {
         SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
     }
 
     public void viewLeaderboard()
