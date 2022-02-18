@@ -94,10 +94,10 @@ namespace QuestionGeneration
 
     public class QuestionGenerator
     {
-        string dbName = "Data source= Education database.db";//the location at which the database is stored
+        string dbName = "URI=file:C:Education database - Copy.db";//the location at which the database is stored
         string sql;//string which will be used later to store sql queries
         int counter;//a counter variable used to store the total number of records in my database
-        int playerId;
+        int playerId = 1;
 
         public LinkedList list = new LinkedList();//instance of my Linked list class
 
@@ -107,7 +107,7 @@ namespace QuestionGeneration
             connection.Open();//opens connection
             SqliteCommand Command = connection.CreateCommand();//allows commands to be created for the database
 
-            sql = "SELECT question_status FROM Question_status WHERE question_id = " + data + "AND player_id = "+playerId+"";//a query to find the status of the question based on its id, which is passed in as the variable data
+            sql = "SELECT question_status FROM Question_status WHERE question_id = " + data + " AND player_id = "+playerId+"";//a query to find the status of the question based on its id, which is passed in as the variable data
             Command.CommandText = sql;//sets the sql variable to the command text
             SqliteDataReader reader = Command.ExecuteReader();//execute query above
             reader.Read();//reads data from the database
@@ -122,7 +122,7 @@ namespace QuestionGeneration
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT question FROM Questions WHERE question_id = " + data + "";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
+            sql = "SELECT question FROM Question WHERE question_id = " + data + "";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();
@@ -137,7 +137,7 @@ namespace QuestionGeneration
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT COUNT(question_id) FROM Questions WHERE question_id";//counts the total number of records I have in my database from the question_id field
+            sql = "SELECT COUNT(question_id) FROM Question";//counts the total number of records I have in my database from the question_id field
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();

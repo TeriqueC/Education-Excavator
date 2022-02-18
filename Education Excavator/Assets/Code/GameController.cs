@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace QuestionGeneration{
 
@@ -10,6 +11,7 @@ namespace QuestionGeneration{
     public GameObject canvas;
     public GameObject PauseMenu;
     public GameObject questionPopup;
+    public GameObject questionBox;
 
     QuestionGenerator generator = new QuestionGenerator();
 
@@ -18,6 +20,7 @@ namespace QuestionGeneration{
         void Start()
         {
             generator.generateQuestions();
+            updateQuestion();
             canvas.SetActive(false);
             player.GetComponent<Player>();
         }
@@ -45,7 +48,8 @@ namespace QuestionGeneration{
         }
 
         public void updateQuestion(){
-
+            string newQuestion = generator.updateQuestion();
+            questionBox.GetComponent<Text>().text= newQuestion;
         }
     }
 }
