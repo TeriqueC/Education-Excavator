@@ -3,7 +3,7 @@ using Mono.Data.Sqlite;
 using System.Data;
 using System;
 
-namespace QuestionGeneration
+namespace EducationExcavator
 {
     public class Node
     {
@@ -85,7 +85,6 @@ namespace QuestionGeneration
             {
                 QuestionGenerator generator = new QuestionGenerator();//object of my question generation class
                 string question = generator.getQuestion(start.data[0]);//uses the int in the array[0] (primary key for db) in the print question method, and stores results in a string called question
-                addSort(start.data[0]);
                 start = start.next; // if the list is not empty then the next node is set to replace the previous starting node of the list
                 return question;//returns the string question
             }
@@ -147,6 +146,19 @@ namespace QuestionGeneration
             {
                 list.addSort(i);//enqueues all the records ids, represented as the Int I, from the database and stores them in different nodes, sorted by question status(setData method)
             }
+            connection.Close();
+        }
+
+        public void updateStatus(int status){
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+
+            sql = "INSERT INTO Question_status(question_status) VALUES("+status+")";
+
+            Command.CommandText = sql;
+            Command.ExecuteNonQuery();
+
             connection.Close();
         }
 

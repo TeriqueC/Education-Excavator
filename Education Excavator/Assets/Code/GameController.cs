@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace QuestionGeneration{
+namespace EducationExcavator{
 
     public class GameController : MonoBehaviour
     {
     public Player player;
+    public Asteroid asteroid;
     public GameObject canvas;
     public GameObject PauseMenu;
     public GameObject questionPopup;
     public GameObject questionBox;
+    public GameObject health;
 
     QuestionGenerator generator = new QuestionGenerator();
 
@@ -30,13 +32,22 @@ namespace QuestionGeneration{
         {
             player.movement();
             player.shoot();
+            checkHealth();
+            bool change = asteroid.checkQuestion();
+            if(change == true){
+                updateQuestion();
+            }
+        }
+
+        public void checkHealth(){
+            string lives = player.checkLives().ToString();
+            health.GetComponent<Text>().text= lives;
         }
 
         public void pause()
         {
             canvas.SetActive(true);
             questionPopup.SetActive(false);
-            //PauseMenu.SetActive(true);
             Time.timeScale= 0f;
             isGamePaused = true;
         }
