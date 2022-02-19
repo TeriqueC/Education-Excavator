@@ -8,11 +8,7 @@ namespace EducationExcavator
     public class Controller : MonoBehaviour
     {
         public void mainMenu(){
-            SceneManager.LoadScene(0);
-        }
-
-        public void gameOver(){
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(1);
         }
 
         public void quitGame()
@@ -22,13 +18,13 @@ namespace EducationExcavator
 
         public void startGame()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
             Time.timeScale = 1f;
         }
 
         public void viewLeaderboard()
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
     }
 }

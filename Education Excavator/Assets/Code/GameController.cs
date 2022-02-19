@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace EducationExcavator{
 
@@ -40,8 +41,12 @@ namespace EducationExcavator{
         }
 
         public void checkHealth(){
-            string lives = player.checkLives().ToString();
+            int life = player.checkLives();
+            string lives = life.ToString();
             health.GetComponent<Text>().text= lives;
+            if(life == 0){
+                SceneManager.LoadScene(4);
+            }
         }
 
         public void pause()

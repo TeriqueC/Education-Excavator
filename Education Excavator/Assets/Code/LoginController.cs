@@ -30,11 +30,13 @@ namespace EducationExcavator{
 
         public void logIn(){
             canvas.SetActive(true);
+            loginSquare.SetActive(true);
             signinSquare.SetActive(false);
         }
 
         public void signIn(){
             canvas.SetActive(true);
+            signinSquare.SetActive(true);
             loginSquare.SetActive(false);
         }
     }

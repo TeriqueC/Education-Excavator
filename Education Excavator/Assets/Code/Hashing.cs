@@ -56,7 +56,7 @@ namespace EducationExcavator
                     connection.Open();
                     SqliteCommand Command = connection.CreateCommand();
 
-                    sql = "INSERT INTO Passwords(user_name, password) VALUES('" + userName + "', '" + hashedValue + "')";
+                    sql = "INSERT INTO Users(player_name, hashed_password) VALUES('" + userName + "', '" + hashedValue + "')";
 
                     Command.CommandText = sql;
                     Command.ExecuteNonQuery();
@@ -74,7 +74,7 @@ namespace EducationExcavator
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT COUNT(user_id) FROM Passwords";
+            sql = "SELECT COUNT(player_id) FROM Users";
 
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
@@ -91,7 +91,7 @@ namespace EducationExcavator
                 connection.Open();
                 SqliteCommand Command = connection.CreateCommand();
 
-                sql = "SELECT user_name FROM passwords WHERE user_id =" + i + "";
+                sql = "SELECT player_name FROM Users WHERE player_id =" + i + "";
 
                 Command.CommandText = sql;
                 SqliteDataReader reader = Command.ExecuteReader();
@@ -117,7 +117,7 @@ namespace EducationExcavator
                 connection.Open();
                 SqliteCommand Command = connection.CreateCommand();
 
-                sql = "SELECT password FROM passwords WHERE user_id ="+i+"";
+                sql = "SELECT hashed_password FROM Users WHERE player_id ="+i+"";
 
                 Command.CommandText = sql;
                 SqliteDataReader reader = Command.ExecuteReader();
