@@ -18,7 +18,12 @@ namespace EducationExcavator{
         }
 
         public void loginEnter(){
-            
+            //string username;
+            //string password;
+            //bool conformation = hashing.CheckDetails(username, password);
+            //if(conformation == true){
+              //  Player_id...
+            //}
         }
 
         public void signinEnter(){
