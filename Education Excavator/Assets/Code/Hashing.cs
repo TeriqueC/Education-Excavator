@@ -93,6 +93,21 @@ namespace EducationExcavator
            }
            return false;
         }
+        
+         public int retrieveId(string username)
+        {
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+
+            sql = "SELECT user_id FROM passwords WHERE user_name ='" + username + "'";
+
+            Command.CommandText = sql;
+            SqliteDataReader reader = Command.ExecuteReader();
+            reader.Read();
+            int playerId = reader.GetInt32(0);
+            return playerId;
+        }
 
         public void setCounter()
         {

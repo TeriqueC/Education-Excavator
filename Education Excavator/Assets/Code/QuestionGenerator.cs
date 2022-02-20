@@ -96,7 +96,11 @@ namespace EducationExcavator
         string dbName = "URI=file:C:Education database - Copy.db";//the location at which the database is stored
         string sql;//string which will be used later to store sql queries
         int counter;//a counter variable used to store the total number of records in my database
-        int playerId = 1;
+        int playerId;
+
+        public void setPlayerId(int id){
+            playerId = id;
+        }
 
         public LinkedList list = new LinkedList();//instance of my Linked list class
 

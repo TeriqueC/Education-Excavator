@@ -17,6 +17,7 @@ namespace EducationExcavator{
     public GameObject health;
 
     QuestionGenerator generator = new QuestionGenerator();
+    //LoginController loginController = new LoginController();
 
     public static bool isGamePaused = false;
         // Start is called before the first frame update
@@ -64,6 +65,7 @@ namespace EducationExcavator{
         }
 
         public void updateQuestion(){
+            //generator.setPlayerId();
             string newQuestion = generator.updateQuestion();
             questionBox.GetComponent<Text>().text= newQuestion;
         }

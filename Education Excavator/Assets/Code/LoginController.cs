@@ -9,6 +9,7 @@ namespace EducationExcavator{
         public GameObject loginSquare;
         public GameObject signinSquare;
 
+        int playerId;
         Hashing hashing = new Hashing();
 
         // Start is called before the first frame update
@@ -22,7 +23,7 @@ namespace EducationExcavator{
             //string password;
             //bool conformation = hashing.CheckDetails(username, password);
             //if(conformation == true){
-              //  Player_id...
+                //playerId = hashing.retrieveId(username);
             //}
         }
 
