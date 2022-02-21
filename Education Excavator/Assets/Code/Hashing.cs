@@ -42,11 +42,12 @@ namespace EducationExcavator
            return size;
         }
 
-        public string insertDetails(string userName, string password)
+        public bool[] insertDetails(string userName, string password)
         {
             setCounter();
             bool len = checkLength(password);
             bool userCollision = usernameCollision(userName);
+            bool[] confirm = new bool[2];
             if(len == true && userCollision==false)
             {
                 hashedValue = hash(password);
@@ -62,11 +63,17 @@ namespace EducationExcavator
                     Command.CommandText = sql;
                     Command.ExecuteNonQuery();
                     connection.Close();
-                    return "entered successfully";
+                    confirm[0] = true;
+                    confirm[1] = true;
+                    return confirm;
                 }
-                return "password is already in use!";
+                confirm[0]= true;
+                confirm[1] = false;
+                return confirm;
             }
-           return "Your password is too long or your username is already in use!";         
+            confirm[0]= false;
+            confirm[1] = false;
+            return confirm;         
         }
 
         public bool CheckDetails(string userName, string password)
@@ -100,7 +107,7 @@ namespace EducationExcavator
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT user_id FROM passwords WHERE user_name ='" + username + "'";
+            sql = "SELECT player_id FROM Users WHERE player_name ='" + username + "'";
 
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();

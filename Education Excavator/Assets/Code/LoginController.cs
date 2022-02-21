@@ -25,13 +25,12 @@ namespace EducationExcavator{
 
         public void loginEnter(){
             username = userNameInput.text;
-            Debug.Log(username);
             password = passwordInput.text;
-            Debug.Log(password);
             bool conformation = hashing.CheckDetails(username, password);
             if(conformation == true){
                 playerId = hashing.retrieveId(username);
                 Debug.Log("working!!");
+                Debug.Log(playerId);
             }
             else{
                 Debug.Log("wrong but working !!");
@@ -39,10 +38,20 @@ namespace EducationExcavator{
         }
 
         public void signinEnter(){
-            //string username;
-            //string password;
-            //string conformation = hashing.insertDetails(username, password);
-            //Debug.Log(conformation);
+            username = userNameInput.text;
+            password= passwordInput.text;
+            bool[] conformation = hashing.insertDetails(username, password);
+            if(conformation[0] == true){
+                if(conformation[1]== true){
+                    Debug.Log("sign in was successful");
+                }
+                else{
+                    Debug.Log("change password!");
+                }
+            }
+            else{
+                Debug.Log("change username");
+            }
         }
 
         public void logIn(){
