@@ -7,8 +7,10 @@ namespace EducationExcavator
 {
     public class Controller : MonoBehaviour
     {
-        public void mainMenu(){
+        public int playerId;
+        public void mainMenu(int Id){
             SceneManager.LoadScene(1);
+            playerId= Id;
         }
 
         public void quitGame()

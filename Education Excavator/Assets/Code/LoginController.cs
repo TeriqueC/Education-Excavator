@@ -29,8 +29,9 @@ namespace EducationExcavator{
             bool conformation = hashing.CheckDetails(username, password);
             if(conformation == true){
                 playerId = hashing.retrieveId(username);
-                Debug.Log("working!!");
-                Debug.Log(playerId);
+                Debug.Log("successful!!");
+                Controller controller = new Controller();
+                controller.mainMenu(playerId);
             }
             else{
                 Debug.Log("wrong but working !!");
@@ -44,6 +45,7 @@ namespace EducationExcavator{
             if(conformation[0] == true){
                 if(conformation[1]== true){
                     Debug.Log("sign in was successful");
+                    canvas.SetActive(false);
                 }
                 else{
                     Debug.Log("change password!");

@@ -97,6 +97,7 @@ namespace EducationExcavator
         string sql;//string which will be used later to store sql queries
         int counter;//a counter variable used to store the total number of records in my database
         int playerId;
+        int subjectId=1;
 
         public void setPlayerId(int id){
             playerId = id;
@@ -125,7 +126,7 @@ namespace EducationExcavator
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT question FROM Question WHERE question_id = " + data + "";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
+            sql = "SELECT question FROM Question WHERE question_id = " + data + " AND subject_id = "+subjectId+"";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();

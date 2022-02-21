@@ -65,7 +65,6 @@ namespace EducationExcavator{
         }
 
         public void updateQuestion(){
-            //generator.setPlayerId();
             string newQuestion = generator.updateQuestion();
             questionBox.GetComponent<Text>().text= newQuestion;
         }
