@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace EducationExcavator{
     public class LoginController : MonoBehaviour
@@ -8,8 +9,12 @@ namespace EducationExcavator{
         public GameObject canvas;
         public GameObject loginSquare;
         public GameObject signinSquare;
+        public InputField userNameInput;
+        public InputField passwordInput;
 
         int playerId;
+        string username;
+        string password;
         Hashing hashing = new Hashing();
 
         // Start is called before the first frame update
@@ -19,12 +24,18 @@ namespace EducationExcavator{
         }
 
         public void loginEnter(){
-            //string username;
-            //string password;
-            //bool conformation = hashing.CheckDetails(username, password);
-            //if(conformation == true){
-                //playerId = hashing.retrieveId(username);
-            //}
+            username = userNameInput.text;
+            Debug.Log(username);
+            password = passwordInput.text;
+            Debug.Log(password);
+            bool conformation = hashing.CheckDetails(username, password);
+            if(conformation == true){
+                playerId = hashing.retrieveId(username);
+                Debug.Log("working!!");
+            }
+            else{
+                Debug.Log("wrong but working !!");
+            }
         }
 
         public void signinEnter(){
