@@ -30,7 +30,7 @@ namespace EducationExcavator{
             if(conformation == true){
                 playerId = hashing.retrieveId(username);
                 Debug.Log("successful!!");
-                Controller controller = new Controller();
+                Controller controller = gameObject.AddComponent<Controller>();
                 controller.mainMenu(playerId);
             }
             else{
