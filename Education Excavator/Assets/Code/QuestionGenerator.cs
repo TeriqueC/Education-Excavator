@@ -117,6 +117,40 @@ namespace EducationExcavator
             connection.Close();//closes the database connection
             return state;//returns the value of state (to the node in the linked list)
         }
+        public int setlength()
+        {
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+
+            sql = "SELECT COUNT(question_id) FROM Question WHERE subject_id = " + subjectId + "";//counts the total number of records I have in my database from the question_id field
+            Command.CommandText = sql;
+            SqliteDataReader reader = Command.ExecuteReader();
+            reader.Read();
+            int length = reader.GetInt32(0);
+            connection.Close();
+            return length;
+        }
+
+        public int[] setCounter()
+        {
+            int[] counter = new int[setlength()];
+            int i = 0;
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+
+            sql = "SELECT question_id FROM Question WHERE subject_id = "+subjectId+"";//counts the total number of records I have in my database from the question_id field
+            Command.CommandText = sql;
+            SqliteDataReader reader = Command.ExecuteReader();
+            while (reader.Read())
+            {
+                counter[i] = reader.GetInt32(0);//sets the counter variable to total number of records, which was read from the database
+                i = i+1;
+            }
+           connection.Close();
+           return counter;
+        }
 
         public string getQuestion(int data)
         {
@@ -159,41 +193,6 @@ namespace EducationExcavator
             
         }
 
-        public int setlength()
-        {
-            SqliteConnection connection = new SqliteConnection(dbName);
-            connection.Open();
-            SqliteCommand Command = connection.CreateCommand();
-
-            sql = "SELECT COUNT(question_id) FROM Question WHERE subject_id = " + subjectId + "";//counts the total number of records I have in my database from the question_id field
-            Command.CommandText = sql;
-            SqliteDataReader reader = Command.ExecuteReader();
-            reader.Read();
-            int length = reader.GetInt32(0);
-            connection.Close();
-            return length;
-        }
-
-        public int[] setCounter()
-        {
-            int[] counter = new int[setlength()];
-            int i = 0;
-            SqliteConnection connection = new SqliteConnection(dbName);
-            connection.Open();
-            SqliteCommand Command = connection.CreateCommand();
-
-            sql = "SELECT question_id FROM Question WHERE subject_id = "+subjectId+"";//counts the total number of records I have in my database from the question_id field
-            Command.CommandText = sql;
-            SqliteDataReader reader = Command.ExecuteReader();
-            while (reader.Read())
-            {
-                counter[i] = reader.GetInt32(0);//sets the counter variable to total number of records, which was read from the database
-                i = i+1;
-            }
-           connection.Close();
-           return counter;
-        }
-
         public string[] updateQuestion()
         {
             currentQuestion=list.removeStart();
@@ -215,15 +214,6 @@ namespace EducationExcavator
             return answers;
         }
 
-        public bool checkAnswer(string answer)
-        {
-            if (answer == currentQuestion[1])
-            {
-                return true;
-            }
-            return false;
-        }
-
         public int setStatus(int data)
         {
             SqliteConnection connection = new SqliteConnection(dbName);
@@ -239,10 +229,10 @@ namespace EducationExcavator
             return status;
         }
 
-        public void updateStatus(bool correct)
+        public void updateStatus(string answer)
         {
             int status = setStatus(questionId);
-            if (correct == true && status !=0)
+            if (answer == currentQuestion[1] && status !=0)
             {
                 status = status-1;
             }
