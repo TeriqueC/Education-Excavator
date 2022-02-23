@@ -96,12 +96,12 @@ namespace EducationExcavator
         string dbName = "URI=file:C:Education database - Copy.db";//the location at which the database is stored
         string sql;//string which will be used later to store sql queries
         int counter;//a counter variable used to store the total number of records in my database
-        int playerId;
+        int playerId=1;
         int subjectId=1;
 
-        public void setPlayerId(int id){
-            playerId = id;
-        }
+        //public void setPlayerId(int id){
+            //playerId = id;
+        //}
 
         public LinkedList list = new LinkedList();//instance of my Linked list class
 
@@ -135,23 +135,48 @@ namespace EducationExcavator
             return question;
         }
 
-        public void generateQuestions()
+         public void generateQuestions()
+        {
+            int[] counter =setCounter();
+            for (int i = 0; i < counter.Length; i++)//uses a for loop to repeat this section of code until all data has been added to the queue
+            {
+                list.addSort(counter[i]);//enqueues all the records ids, represented as the Int I, from the database and stores them in different nodes, sorted by question status(setData method)
+            }
+            
+        }
+
+        public int setlength()
         {
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT COUNT(question_id) FROM Question";//counts the total number of records I have in my database from the question_id field
+            sql = "SELECT COUNT(question_id) FROM Question WHERE subject_id = " + subjectId + "";//counts the total number of records I have in my database from the question_id field
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();
-            counter = reader.GetInt32(0);//sets the counter variable to total number of records, which was read from the database
+            int length = reader.GetInt32(0);
+            return length;
+        }
 
-            for (int i = 1; i <= counter; i++)//uses a for loop to repeat this section of code until all data has been added to the queue
+        public int[] setCounter()
+        {
+            int[] counter = new int[setlength()];
+            int i = 0;
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+
+            sql = "SELECT question_id FROM Question WHERE subject_id = "+subjectId+"";//counts the total number of records I have in my database from the question_id field
+            Command.CommandText = sql;
+            SqliteDataReader reader = Command.ExecuteReader();
+            while (reader.Read())
             {
-                list.addSort(i);//enqueues all the records ids, represented as the Int I, from the database and stores them in different nodes, sorted by question status(setData method)
+                counter[i] = reader.GetInt32(0);//sets the counter variable to total number of records, which was read from the database
+                i = i+1;
             }
-            connection.Close();
+           connection.Close();
+           return counter;
         }
 
         public void updateStatus(int status){
