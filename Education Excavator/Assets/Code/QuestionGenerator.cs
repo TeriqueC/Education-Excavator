@@ -1,7 +1,5 @@
 using UnityEngine;
 using Mono.Data.Sqlite;
-using System.Data;
-using System;
 
 namespace EducationExcavator
 {
@@ -75,7 +73,7 @@ namespace EducationExcavator
             }
         }
 
-        public string removeStart()//this method removes the first item on the list
+        public string[] removeStart()//this method removes the first item on the list
         {
             if (start == null)//if start is null then the list is empty
             {
@@ -83,8 +81,11 @@ namespace EducationExcavator
             }
             else
             {
+                string[] question = new string[2];
                 QuestionGenerator generator = new QuestionGenerator();//object of my question generation class
-                string question = generator.getQuestion(start.data[0]);//uses the int in the array[0] (primary key for db) in the print question method, and stores results in a string called question
+                question[0] = generator.getQuestion(start.data[0]);//uses the int in the array[0] (primary key for db) in the print question method, and stores results in a string called question
+                question[1] = generator.getAnswer(start.data[0]);
+                generator.setStatus(start.data[0]);
                 start = start.next; // if the list is not empty then the next node is set to replace the previous starting node of the list
                 return question;//returns the string question
             }
@@ -95,13 +96,10 @@ namespace EducationExcavator
     {
         string dbName = "URI=file:C:Education database - Copy.db";//the location at which the database is stored
         string sql;//string which will be used later to store sql queries
-        int counter;//a counter variable used to store the total number of records in my database
-        int playerId=1;
-        int subjectId=1;
-
-        //public void setPlayerId(int id){
-            //playerId = id;
-        //}
+        static int playerId = 1;
+        static int questionId;
+        static string[] currentQuestion = new string[2];
+        static int subjectId = 1;
 
         public LinkedList list = new LinkedList();//instance of my Linked list class
 
@@ -111,7 +109,7 @@ namespace EducationExcavator
             connection.Open();//opens connection
             SqliteCommand Command = connection.CreateCommand();//allows commands to be created for the database
 
-            sql = "SELECT question_status FROM Question_status WHERE question_id = " + data + " AND player_id = "+playerId+"";//a query to find the status of the question based on its id, which is passed in as the variable data
+            sql = "SELECT question_status FROM Question_status WHERE question_id = " + data + " AND player_id = " + playerId + "";//a query to find the status of the question based on its id, which is passed in as the variable data
             Command.CommandText = sql;//sets the sql variable to the command text
             SqliteDataReader reader = Command.ExecuteReader();//execute query above
             reader.Read();//reads data from the database
@@ -122,11 +120,12 @@ namespace EducationExcavator
 
         public string getQuestion(int data)
         {
+            questionId = data;
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT question FROM Question WHERE question_id = " + data + " AND subject_id = "+subjectId+"";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
+            sql = "SELECT question FROM Question WHERE question_id = " + data + "";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();
@@ -135,7 +134,22 @@ namespace EducationExcavator
             return question;
         }
 
-         public void generateQuestions()
+        public string getAnswer(int data)
+        {
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+
+            sql = "SELECT answer FROM Answer WHERE question_id = " + data + "";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
+            Command.CommandText = sql;
+            SqliteDataReader reader = Command.ExecuteReader();
+            reader.Read();
+            string answer = reader.GetString(0);//stores the question as a string in the varible question
+            connection.Close();
+            return answer;
+        }
+
+        public void generateQuestions()
         {
             int[] counter =setCounter();
             for (int i = 0; i < counter.Length; i++)//uses a for loop to repeat this section of code until all data has been added to the queue
@@ -156,6 +170,7 @@ namespace EducationExcavator
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();
             int length = reader.GetInt32(0);
+            connection.Close();
             return length;
         }
 
@@ -179,22 +194,73 @@ namespace EducationExcavator
            return counter;
         }
 
-        public void updateStatus(int status){
+        public string[] updateQuestion()
+        {
+            currentQuestion=list.removeStart();
+            return currentQuestion;
+        }
+
+        public string[] updateAnswers()
+        {
+            string[] answers = new string[3];
+            int[] answerId = new int[3];
+            for (int i = 0; i < 3; i++)
+            {
+                answerId[i] = Random.Range(1, setlength());
+            }
+            for (int i= 0; i < 3; i++)
+            {
+                answers[i] = getAnswer(answerId[i]);
+            }
+            return answers;
+        }
+
+        public bool checkAnswer(string answer)
+        {
+            if (answer == currentQuestion[1])
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public int setStatus(int data)
+        {
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "INSERT INTO Question_status(question_status) VALUES("+status+")";
+            sql = "SELECT question_status FROM Question_status WHERE question_id = " + data + " AND player_id = "+playerId+"";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
+            Command.CommandText = sql;
+            SqliteDataReader reader = Command.ExecuteReader();
+            reader.Read();
+            int status = reader.GetInt32(0);//stores the question as a string in the varible question
+            connection.Close();
+            return status;
+        }
+
+        public void updateStatus(bool correct)
+        {
+            int status = setStatus(questionId);
+            if (correct == true && status !=0)
+            {
+                status = status-1;
+            }
+            else if (status != 3)
+            {
+                status = status+1;
+            }
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+
+            sql = "UPDATE Question_status SET question_status = "+status+" WHERE question_id = "+questionId+" AND player_id = '"+playerId+"'";
 
             Command.CommandText = sql;
             Command.ExecuteNonQuery();
 
             connection.Close();
-        }
-
-        public string updateQuestion(){
-            string currentQuestion = list.removeStart();
-            return currentQuestion;
+            list.addSort(questionId);
         }
     }
 }
