@@ -12,7 +12,7 @@ namespace EducationExcavator{
         public InputField userNameInput;
         public InputField passwordInput;
 
-        int playerId;
+        static int playerId;
         string username;
         string password;
         Hashing hashing = new Hashing();

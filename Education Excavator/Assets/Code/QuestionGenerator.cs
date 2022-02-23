@@ -99,7 +99,7 @@ namespace EducationExcavator
         static int playerId = 1;
         static int questionId;
         static string[] currentQuestion = new string[2];
-        static int subjectId = 1;
+        static int subjectId;
 
         public LinkedList list = new LinkedList();//instance of my Linked list class
 
@@ -183,8 +183,9 @@ namespace EducationExcavator
             return answer;
         }
 
-        public void generateQuestions()
+        public void generateQuestions(int subjectID)
         {
+            subjectId = subjectID;
             int[] counter =setCounter();
             for (int i = 0; i < counter.Length; i++)//uses a for loop to repeat this section of code until all data has been added to the queue
             {

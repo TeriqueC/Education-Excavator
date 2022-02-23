@@ -17,13 +17,13 @@ namespace EducationExcavator{
     public GameObject health;
 
     QuestionGenerator generator = new QuestionGenerator();
-    //LoginController loginController = new LoginController();
 
     public static bool isGamePaused = false;
         // Start is called before the first frame update
         void Start()
         {
-            generator.generateQuestions();
+            LoginController loginController = gameObject.AddComponent<LoginController>();
+            generator.generateQuestions(1);
             updateQuestion();
             canvas.SetActive(false);
             player.GetComponent<Player>();
