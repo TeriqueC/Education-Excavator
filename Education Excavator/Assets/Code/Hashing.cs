@@ -43,23 +43,21 @@ namespace EducationExcavator
            return size;
         }
 
-        public bool[] insertDetails(string userName, string password)
+        public bool[] insertDetails(string userName, int password, bool len)
         {
             setCounter();
-            bool len = checkLength(password);
             bool userCollision = usernameCollision(userName);
             bool[] confirm = new bool[2];
             if(len == true && userCollision==false)
             {
-                hashedValue = hash(password);
-                bool collision = passwordCollision(hashedValue);
+                bool collision = passwordCollision(password);
                 if (collision == false)
                 {
                     SqliteConnection connection = new SqliteConnection(dbName);
                     connection.Open();
                     SqliteCommand Command = connection.CreateCommand();
 
-                    sql = "INSERT INTO Users(player_name, hashed_password) VALUES('" + userName + "', '" + hashedValue + "')";
+                    sql = "INSERT INTO Users(player_name, hashed_password) VALUES('" + userName + "', '" + password + "')";
 
                     Command.CommandText = sql;
                     Command.ExecuteNonQuery();
