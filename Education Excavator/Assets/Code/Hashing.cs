@@ -76,10 +76,9 @@ namespace EducationExcavator
             return confirm;         
         }
 
-        public bool CheckDetails(string userName, string password)
+        public bool CheckDetails(string userName, int password)
         {
            setCounter();
-           int code = hash(password);
            if (usernameCollision(userName) == true)
            {
                 SqliteConnection connection = new SqliteConnection(dbName);
@@ -92,7 +91,7 @@ namespace EducationExcavator
                 SqliteDataReader reader = Command.ExecuteReader();
                 reader.Read();
                 int currentPassword = reader.GetInt32(0);
-                if(currentPassword == code)
+                if(currentPassword == password)
                 {
                     return true;
                 }

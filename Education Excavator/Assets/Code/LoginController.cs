@@ -22,13 +22,14 @@ namespace EducationExcavator{
         // Start is called before the first frame update
         void Start()
         {
-            canvas.SetActive(false);    
+            canvas.SetActive(false);  
         }
 
         public void loginEnter(){
             username = loginUserName.text;
             password = loginPassword.text;
-            bool conformation = hashing.CheckDetails(username, password);
+            int passcode= hashing.hash(password);
+            bool conformation = hashing.CheckDetails(username, passcode);
             if(conformation == true){
                 playerId = hashing.retrieveId(username);
                 Debug.Log("successful!!");

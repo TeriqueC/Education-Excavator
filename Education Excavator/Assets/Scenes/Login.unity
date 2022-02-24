@@ -1074,7 +1074,7 @@ GameObject:
   - component: {fileID: 710789858}
   - component: {fileID: 710789857}
   m_Layer: 5
-  m_Name: userName
+  m_Name: loginUserName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1863,7 +1863,7 @@ GameObject:
   - component: {fileID: 1173667365}
   - component: {fileID: 1173667364}
   m_Layer: 5
-  m_Name: password
+  m_Name: loginPassword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1933,8 +1933,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1173667365}
   m_TextComponent: {fileID: 372662957}
   m_Placeholder: {fileID: 515349117}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -2171,7 +2171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1310133071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2649,7 +2649,7 @@ GameObject:
   - component: {fileID: 1602245786}
   - component: {fileID: 1602245785}
   m_Layer: 5
-  m_Name: signInButton
+  m_Name: signUpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2852,8 +2852,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1631612118}
   m_TextComponent: {fileID: 257521099}
   m_Placeholder: {fileID: 537361829}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -3068,7 +3068,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sign in
+  m_Text: Sign up
 --- !u!222 &1779853938
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3433,7 +3433,7 @@ GameObject:
   - component: {fileID: 2023081750}
   - component: {fileID: 2023081751}
   m_Layer: 0
-  m_Name: SignInSquare
+  m_Name: SignupSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3539,9 +3539,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1310133070}
   loginSquare: {fileID: 1743791089}
-  signinSquare: {fileID: 2023081749}
-  userNameInput: {fileID: 710789857}
-  passwordInput: {fileID: 1173667364}
+  signupSquare: {fileID: 2023081749}
+  loginUserName: {fileID: 710789857}
+  loginPassword: {fileID: 1173667364}
+  signupUserName: {fileID: 1011700399}
+  signupPassword: {fileID: 1631612117}
 --- !u!4 &2071116329
 Transform:
   m_ObjectHideFlags: 0
