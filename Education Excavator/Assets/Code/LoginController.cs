@@ -8,9 +8,11 @@ namespace EducationExcavator{
     {
         public GameObject canvas;
         public GameObject loginSquare;
-        public GameObject signinSquare;
-        public InputField userNameInput;
-        public InputField passwordInput;
+        public GameObject signupSquare;
+        public InputField loginUserName;
+        public InputField loginPassword;
+        public InputField signupUserName;
+        public InputField signupPassword;
 
         static int playerId;
         string username;
@@ -24,8 +26,8 @@ namespace EducationExcavator{
         }
 
         public void loginEnter(){
-            username = userNameInput.text;
-            password = passwordInput.text;
+            username = loginUserName.text;
+            password = loginPassword.text;
             bool conformation = hashing.CheckDetails(username, password);
             if(conformation == true){
                 playerId = hashing.retrieveId(username);
@@ -39,8 +41,9 @@ namespace EducationExcavator{
         }
 
         public void signinEnter(){
-            username = userNameInput.text;
-            password= passwordInput.text;
+            username = signupUserName.text;
+            password= signupPassword.text;
+            Debug.Log(username+" "+password);
             bool[] conformation = hashing.insertDetails(username, password);
             if(conformation[0] == true){
                 if(conformation[1]== true){
@@ -56,15 +59,19 @@ namespace EducationExcavator{
             }
         }
 
+        public void exit(){
+            canvas.SetActive(false);
+        }
+
         public void logIn(){
             canvas.SetActive(true);
             loginSquare.SetActive(true);
-            signinSquare.SetActive(false);
+            signupSquare.SetActive(false);
         }
 
         public void signIn(){
             canvas.SetActive(true);
-            signinSquare.SetActive(true);
+            signupSquare.SetActive(true);
             loginSquare.SetActive(false);
         }
     }
