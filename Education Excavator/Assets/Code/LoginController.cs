@@ -18,7 +18,6 @@ namespace EducationExcavator{
         string username;
         string password;
         Hashing hashing = new Hashing();
-        QuestionGenerator generator = new QuestionGenerator();
 
         // Start is called before the first frame update
         void Start()
@@ -52,7 +51,6 @@ namespace EducationExcavator{
             if(conformation[0] == true){
                 if(conformation[1]== true){
                     Debug.Log("sign in was successful");
-                    generator.setNewStatus(hashing.retrieveId(username));
                     canvas.SetActive(false);
                 }
                 else{
