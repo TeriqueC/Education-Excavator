@@ -14,6 +14,7 @@ namespace EducationExcavator
 
         int hashValue = 0;
         int hashedValue;
+        static int playerId;
         public int counter;
 
         public int hash(string word)
@@ -65,6 +66,8 @@ namespace EducationExcavator
                     connection.Close();
                     confirm[0] = true;
                     confirm[1] = true;
+                    QuestionGenerator generator = new QuestionGenerator();
+                    generator.setNewStatus(retrieveId(userName));
                     return confirm;
                 }
                 confirm[0]= true;
@@ -93,6 +96,7 @@ namespace EducationExcavator
                 int currentPassword = reader.GetInt32(0);
                 if(currentPassword == password)
                 {
+                    retrieveId(userName);
                     return true;
                 }
                 return false;
@@ -111,7 +115,7 @@ namespace EducationExcavator
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();
-            int playerId = reader.GetInt32(0);
+            playerId = reader.GetInt32(0);
             return playerId;
         }
 

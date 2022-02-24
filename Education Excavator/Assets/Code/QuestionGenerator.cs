@@ -215,6 +215,36 @@ namespace EducationExcavator
             return answers;
         }
 
+        public int totalQuestions(){
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+
+            sql = "SELECT COUNT(question_id) FROM Question";//counts the total number of records I have in my database from the question_id field
+            Command.CommandText = sql;
+            SqliteDataReader reader = Command.ExecuteReader();
+            reader.Read();
+            int total = reader.GetInt32(0);
+            connection.Close();
+            return total;
+        }
+
+        public void setNewStatus(int playerID)
+        {
+            for(int i=0; i > totalQuestions(); i++){
+                SqliteConnection connection = new SqliteConnection(dbName);
+                connection.Open();
+                SqliteCommand Command = connection.CreateCommand();
+
+                sql = "INSERT INTO Question_status(question_status, question_id, player_id) VALUES("+0+", "+i+", "+playerID+")";
+
+                Command.CommandText = sql;
+                Command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+        }
+
         public int setStatus(int data)
         {
             SqliteConnection connection = new SqliteConnection(dbName);
