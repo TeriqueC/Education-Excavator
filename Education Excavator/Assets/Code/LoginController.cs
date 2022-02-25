@@ -27,7 +27,7 @@ namespace EducationExcavator{
 
         public void loginEnter(){
             username = loginUserName.text;
-            password = loginPassword.text;
+            string password = loginPassword.text;
             int passcode= hashing.hash(password);
             bool conformation = hashing.CheckDetails(username, passcode);
             if(conformation == true){
