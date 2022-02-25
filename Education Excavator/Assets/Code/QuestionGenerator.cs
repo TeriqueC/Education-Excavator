@@ -231,7 +231,7 @@ namespace EducationExcavator
 
         public void setNewStatus(int playerID)
         {
-            for(int i=0; i > totalQuestions(); i++){
+            for(int i=0; i < totalQuestions(); i++){
                 SqliteConnection connection = new SqliteConnection(dbName);
                 connection.Open();
                 SqliteCommand Command = connection.CreateCommand();

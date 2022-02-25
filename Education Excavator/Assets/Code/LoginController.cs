@@ -44,7 +44,6 @@ namespace EducationExcavator{
         public void signinEnter(){
             username = signupUserName.text;
             password= signupPassword.text;
-            Debug.Log(username+" "+password);
             bool len = hashing.checkLength(password);
             int passcode = hashing.hash(password);
             bool[] conformation = hashing.insertDetails(username, passcode, len);
