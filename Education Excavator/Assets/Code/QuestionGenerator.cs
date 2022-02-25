@@ -231,18 +231,19 @@ namespace EducationExcavator
 
         public void setNewStatus(int playerID)
         {
+            int j=0;
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
             for(int i=0; i < totalQuestions(); i++){
-                SqliteConnection connection = new SqliteConnection(dbName);
-                connection.Open();
-                SqliteCommand Command = connection.CreateCommand();
+                j= i+1;
 
-                sql = "INSERT INTO Question_status(question_status, question_id, player_id) VALUES("+0+", "+i+", "+playerID+")";
+                sql = "INSERT INTO Question_status(question_status, question_id, player_id) VALUES("+0+", "+j+", "+playerID+")";
 
                 Command.CommandText = sql;
                 Command.ExecuteNonQuery();
-
-                connection.Close();
             }
+            connection.Close();
         }
 
         public int setStatus(int data)

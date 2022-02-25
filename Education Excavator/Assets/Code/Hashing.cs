@@ -62,10 +62,10 @@ namespace EducationExcavator
                     Command.CommandText = sql;
                     Command.ExecuteNonQuery();
                     connection.Close();
-                    confirm[0] = true;
-                    confirm[1] = true;
                     QuestionGenerator generator = new QuestionGenerator();
                     generator.setNewStatus(retrieveId(userName));
+                    confirm[0] = true;
+                    confirm[1] = true;
                     return confirm;
                 }
                 confirm[0]= true;
@@ -92,6 +92,7 @@ namespace EducationExcavator
                 SqliteDataReader reader = Command.ExecuteReader();
                 reader.Read();
                 int currentPassword = reader.GetInt32(0);
+                connection.Close();
                 if(currentPassword == password)
                 {
                     retrieveId(userName);
@@ -114,6 +115,7 @@ namespace EducationExcavator
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();
             playerId = reader.GetInt32(0);
+            connection.Close();
             return playerId;
         }
 
@@ -146,13 +148,11 @@ namespace EducationExcavator
                 SqliteDataReader reader = Command.ExecuteReader();
                 reader.Read();
                 string currentUsername = reader.GetString(0);
-
+                connection.Close();
                 if (newUsername == currentUsername)
                 {
                     collision = true;
-                    connection.Close();
                 }
-                connection.Close();
             }
             return collision;
         }
@@ -172,13 +172,11 @@ namespace EducationExcavator
                 SqliteDataReader reader = Command.ExecuteReader();
                 reader.Read();
                 int currentPassword = reader.GetInt32(0);
-
+                connection.Close();
                 if (newPassword == currentPassword)
                 {
                     collision = true;
-                    connection.Close();
                 }
-                connection.Close();
             }
             return collision;
         }
