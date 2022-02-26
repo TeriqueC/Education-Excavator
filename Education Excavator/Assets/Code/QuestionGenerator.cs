@@ -202,11 +202,13 @@ namespace EducationExcavator
 
         public string[] updateAnswers()
         {
-            string[] answers = new string[3];
+            string[] answers = new string[4];
             int[] answerId = new int[3];
+            int[] counter = setCounter();
+            int length = counter.Length;
             for (int i = 0; i < 3; i++)
             {
-                answerId[i] = Random.Range(1, setlength());
+                answerId[i] = Random.Range(1, counter[length-1]);
             }
             for (int i= 0; i < 3; i++)
             {
