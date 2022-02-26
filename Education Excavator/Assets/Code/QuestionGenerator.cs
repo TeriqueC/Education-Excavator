@@ -270,17 +270,20 @@ namespace EducationExcavator
             return status;
         }
 
-        public void updateStatus(string answer)
+        public bool updateStatus(string answer)
         {
             int status = setStatus(questionId);
+            bool correctAnswer;
             if (answer == currentQuestion[1] && status !=0)
             {
                 status = status-1;
+                correctAnswer = true;
             }
             else if (status != 3)
             {
                 status = status+1;
             }
+            correctAnswer = false;
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
@@ -292,6 +295,7 @@ namespace EducationExcavator
 
             connection.Close();
             list.addSort(questionId);
+            return correctAnswer;
         }
     }
 }

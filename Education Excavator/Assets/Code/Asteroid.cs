@@ -10,6 +10,8 @@ namespace EducationExcavator
         private float asteriod_xpos;
         private float asteroid_ypos = 2f;
 
+        public int Asteroid_value;
+
         public static bool questionChange= false;
         
         public new Rigidbody2D rigidbody;

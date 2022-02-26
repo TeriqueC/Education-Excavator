@@ -15,12 +15,13 @@ namespace EducationExcavator{
     public GameObject questionPopup;
     public GameObject questionBox;
     public GameObject health;
-    public GameObject score;
+    public GameObject scoreBox;
     public GameObject[] answerBoxes;
 
     QuestionGenerator generator = new QuestionGenerator();
     int playerId;
     string Answer;
+    int score= 0;
 
     public static bool isGamePaused = false;
         // Start is called before the first frame update
@@ -41,6 +42,7 @@ namespace EducationExcavator{
             checkHealth();
             bool change = asteroid.checkQuestion();
             if(change == true){
+                //checkAnswer();
                 updateQuestion();
                 updateAnswers();
             }
@@ -53,6 +55,17 @@ namespace EducationExcavator{
             if(life == 0){
                 SceneManager.LoadScene(4);
             }
+        }
+
+        public void checkAnswer(){
+            string answer = answerBoxes[asteroid.Asteroid_value].GetComponent<Text>().text;
+            bool correct = generator.updateStatus(answer);
+            if(correct == true){
+                score= score+10;
+                scoreBox.GetComponent<Text>().text="Score:  "+score;
+            }
+            score = score-10;
+            scoreBox.GetComponent<Text>().text="Score:  "+score;
         }
 
         public void pause()

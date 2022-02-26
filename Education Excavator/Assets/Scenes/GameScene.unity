@@ -1794,6 +1794,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6100246528178538240, guid: db3992e454cee80449c86a9fc5214201, type: 3}
+      propertyPath: Asteroid_value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400980868533076633, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Size.x
       value: 7.33
@@ -1820,7 +1824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400980868533076638, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Name
-      value: Asteroid_A
+      value: Asteroid_1
       objectReference: {fileID: 0}
     - target: {fileID: 400980868533076708, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Pivot.x
@@ -2075,7 +2079,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -63.501, y: 19}
+  m_AnchoredPosition: {x: -63.50099, y: 19}
   m_SizeDelta: {x: 117, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1295345084
@@ -2283,6 +2287,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6100246528178538240, guid: db3992e454cee80449c86a9fc5214201, type: 3}
+      propertyPath: Asteroid_value
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 400980868533076633, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Size.x
       value: 2.4
@@ -2301,7 +2309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400980868533076638, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Name
-      value: Asteroid_D
+      value: Asteroid_4
       objectReference: {fileID: 0}
     - target: {fileID: 400980868533076708, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Pivot.x
@@ -3009,6 +3017,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6100246528178538240, guid: db3992e454cee80449c86a9fc5214201, type: 3}
+      propertyPath: Asteroid_value
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 400980868533076633, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Size.x
       value: 2.4
@@ -3027,7 +3039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400980868533076638, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Name
-      value: Asteroid_C
+      value: Asteroid_3
       objectReference: {fileID: 0}
     - target: {fileID: 400980868533076708, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Pivot.x
@@ -3245,6 +3257,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6100246528178538240, guid: db3992e454cee80449c86a9fc5214201, type: 3}
+      propertyPath: Asteroid_value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400980868533076633, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Size.x
       value: 2.4
@@ -3263,7 +3279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400980868533076638, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Name
-      value: Asteroid_B
+      value: Asteroid_2
       objectReference: {fileID: 0}
     - target: {fileID: 400980868533076708, guid: db3992e454cee80449c86a9fc5214201, type: 3}
       propertyPath: m_Pivot.x
