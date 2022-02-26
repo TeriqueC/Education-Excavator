@@ -206,13 +206,20 @@ namespace EducationExcavator
             int[] answerId = new int[3];
             int[] counter = setCounter();
             int length = counter.Length;
+            answers[Random.Range(0, 3)] = currentQuestion[1];
             for (int i = 0; i < 3; i++)
             {
                 answerId[i] = Random.Range(1, counter[length-1]);
             }
-            for (int i= 0; i < 3; i++)
+            for (int i= 0; i < answers.Length; i++)
             {
-                answers[i] = getAnswer(answerId[i]);
+                int j = i;
+                if(j > 2){
+                    j= 2;
+                }
+                if(answers[i] != currentQuestion[1]){
+                    answers[i] = getAnswer(answerId[j]);
+                }
             }
             return answers;
         }

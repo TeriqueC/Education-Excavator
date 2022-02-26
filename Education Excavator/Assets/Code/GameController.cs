@@ -77,7 +77,6 @@ namespace EducationExcavator{
 
         public void updateAnswers(){
             string[] newAnswers = generator.updateAnswers();
-            newAnswers[3] = Answer;
             for(int i =0; i < answerBoxes.Length; i++){
                 int j = i+1;
                 answerBoxes[i].GetComponent<Text>().text= j+")   "+newAnswers[i];
