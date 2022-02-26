@@ -10,7 +10,7 @@ namespace EducationExcavator
         private float asteriod_xpos;
         private float asteroid_ypos = 2f;
 
-        public int Asteroid_value;
+        public int asteroid_value;
 
         public static bool questionChange= false;
         
@@ -23,6 +23,10 @@ namespace EducationExcavator
             rigidbody = GetComponent<Rigidbody2D>();
             move();
             //gets the component rigid body which applies physics to an object, attached to the gameobject
+        }
+
+        public int setValue(){
+            return asteroid_value;
         }
 
         public void move()

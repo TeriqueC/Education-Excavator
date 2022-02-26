@@ -17,6 +17,7 @@ namespace EducationExcavator{
     public GameObject health;
     public GameObject scoreBox;
     public GameObject[] answerBoxes;
+    public GameObject[] asteroids;
 
     QuestionGenerator generator = new QuestionGenerator();
     int playerId;
@@ -42,7 +43,7 @@ namespace EducationExcavator{
             checkHealth();
             bool change = asteroid.checkQuestion();
             if(change == true){
-                //checkAnswer();
+                checkAnswer();
                 updateQuestion();
                 updateAnswers();
             }
@@ -57,14 +58,15 @@ namespace EducationExcavator{
             }
         }
 
-        public void checkAnswer(){
-            string answer = answerBoxes[asteroid.Asteroid_value].GetComponent<Text>().text;
-            bool correct = generator.updateStatus(answer);
+        public void checkAnswer(){ 
+            string word = answerBoxes[1].GetComponent<Text>().text;
+            string answer= word.Substring(4);
+            bool correct = generator.checkAnswer(answer);
             if(correct == true){
                 score= score+10;
                 scoreBox.GetComponent<Text>().text="Score:  "+score;
             }
-            score = score-10;
+            score = score-5;
             scoreBox.GetComponent<Text>().text="Score:  "+score;
         }
 
@@ -92,7 +94,7 @@ namespace EducationExcavator{
             string[] newAnswers = generator.updateAnswers();
             for(int i =0; i < answerBoxes.Length; i++){
                 int j = i+1;
-                answerBoxes[i].GetComponent<Text>().text= j+")   "+newAnswers[i];
+                answerBoxes[i].GetComponent<Text>().text= j+")  "+newAnswers[i];
             }
         }
     }

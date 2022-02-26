@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 105331337}
   - component: {fileID: 105331336}
   m_Layer: 5
-  m_Name: Score
+  m_Name: ScoreBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2849,7 +2849,7 @@ MonoBehaviour:
   questionPopup: {fileID: 1754918943}
   questionBox: {fileID: 1563838527}
   health: {fileID: 754343305}
-  score: {fileID: 105331334}
+  scoreBox: {fileID: 105331334}
   answerBoxes:
   - {fileID: 1310752453}
   - {fileID: 1962998141}
