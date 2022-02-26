@@ -20,6 +20,7 @@ namespace EducationExcavator
         public int hash(string word)
         {
             int length = word.Length;
+            hashValue= 0;
             for(int i = 0; i < length; i = i+1)
             {
                 char wordChar = word[i];
