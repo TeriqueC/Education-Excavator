@@ -28,13 +28,8 @@ namespace EducationExcavator{
         public void loginEnter(){
             username = loginUserName.text;
             password = loginPassword.text;
-            //string word = loginPassword.text;
             Debug.Log(password);
-            //Debug.Log(word);
             int passcode= hashing.hash(password);
-            //int wordcode= hashing.hash(word);
-            Debug.Log("password attempt"+passcode);
-            //Debug.Log("word"+ wordcode);
             bool conformation = hashing.CheckDetails(username, passcode);
             if(conformation == true){
                 playerId = hashing.retrieveId(username);
