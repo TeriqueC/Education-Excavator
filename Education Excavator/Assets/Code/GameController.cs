@@ -17,7 +17,10 @@ namespace EducationExcavator{
     public GameObject health;
     public GameObject scoreBox;
     public GameObject[] answerBoxes;
-    public GameObject[] asteroids;
+    public GameObject asteroid_1;
+    public GameObject asteroid_2;
+    public GameObject asteroid_3;
+    public GameObject asteroid_4;
 
     QuestionGenerator generator = new QuestionGenerator();
     int playerId;
@@ -33,6 +36,10 @@ namespace EducationExcavator{
             updateAnswers();
             canvas.SetActive(false);
             player.GetComponent<Player>();
+            //Debug.Log(asteroid_1.GetComponent<Asteroid>().setValue());
+            //Debug.Log(asteroid_2.GetComponent<Asteroid>().setValue());
+            //Debug.Log(asteroid_3.GetComponent<Asteroid>().setValue());
+            //Debug.Log(asteroid_4.GetComponent<Asteroid>().setValue());
         }
 
         // Update is called once per frame
@@ -41,12 +48,22 @@ namespace EducationExcavator{
             player.movement();
             player.shoot();
             checkHealth();
+
             bool change = asteroid.checkQuestion();
             if(change == true){
-                checkAnswer();
-                updateQuestion();
-                updateAnswers();
+                int asteroid_value = asteroids.GetComponent<Asteroid>().setValue();
+                Debug.Log(asteroid_value);
+                //checkAnswer(asteroid_value);
+               // updateQuestion();
+               // updateAnswers();
             }
+        }
+
+        public void checkQuestion(){
+            asteroid_1.GetComponent<Asteroid>().checkQuestion();
+            asteroid_2.GetComponent<Asteroid>().checkQuestion();
+            asteroid_3.GetComponent<Asteroid>().checkQuestion();
+            asteroid_4.GetComponent<Asteroid>().checkQuestion();
         }
 
         public void checkHealth(){
@@ -58,8 +75,8 @@ namespace EducationExcavator{
             }
         }
 
-        public void checkAnswer(){ 
-            string word = answerBoxes[1].GetComponent<Text>().text;
+        public void checkAnswer(int value){ 
+            string word = answerBoxes[value].GetComponent<Text>().text;
             string answer= word.Substring(4);
             bool correct = generator.checkAnswer(answer);
             if(correct == true){

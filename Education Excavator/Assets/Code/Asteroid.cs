@@ -26,7 +26,11 @@ namespace EducationExcavator
         }
 
         public int setValue(){
-            return asteroid_value;
+            bool correct = checkQuestion();
+            if( correct == true){
+                return asteroid_value;
+            }
+            return null;
         }
 
         public void move()
@@ -40,8 +44,8 @@ namespace EducationExcavator
         }//spawns asteroid in new location once a collision has taken place
 
         public bool checkQuestion(){
-            if(questionChange== true){
-                questionChange=false;
+          if(questionChange== true){
+               questionChange=false;
                 return true;
             }
             return false;
