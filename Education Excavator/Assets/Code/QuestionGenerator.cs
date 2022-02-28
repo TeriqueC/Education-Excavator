@@ -96,7 +96,7 @@ namespace EducationExcavator
     {
         string dbName = "URI=file:C:Education database - Copy.db";//the location at which the database is stored
         string sql;//string which will be used later to store sql queries
-        static int playerId = 1;
+        static int playerId = Controller.playerId;
         static int questionId;
         static string[] currentQuestion = new string[2];
         static int subjectId;
