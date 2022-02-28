@@ -59,6 +59,7 @@ namespace EducationExcavator{
                     }
                 }
                 if(check == false){
+                    generator.checkAnswer(null);
                     updateQuestion();
                     updateAnswers();
                     score = score-5;
@@ -78,15 +79,16 @@ namespace EducationExcavator{
 
         public void confirmAnswer(int value){ 
             string word = answerBoxes[value].GetComponent<Text>().text;
-            Debug.Log(value);
             string answer= word.Substring(4);
             bool correct = generator.checkAnswer(answer);
             if(correct == true){
                 score= score+10;
                 scoreBox.GetComponent<Text>().text="Score:  "+score;
             }
-            score = score-5;
-            scoreBox.GetComponent<Text>().text="Score:  "+score;
+            else{
+                score = score-5;
+                scoreBox.GetComponent<Text>().text="Score:  "+score;
+            }
         }
 
         public void pause()
