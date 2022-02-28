@@ -3280,6 +3280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  subjectId: 0
 --- !u!4 &2039488520
 Transform:
   m_ObjectHideFlags: 0

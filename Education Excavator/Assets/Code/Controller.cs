@@ -7,7 +7,9 @@ namespace EducationExcavator
 {
     public class Controller : MonoBehaviour
     {
-        public int playerId;
+        public static int playerId;
+        public static int subjectId;
+
         public void mainMenu(int Id){
             SceneManager.LoadScene(1);
             playerId= Id;
@@ -18,10 +20,11 @@ namespace EducationExcavator
             Application.Quit();
         }
 
-        public void startGame()
+        public void startGame(int subject)
         {
             SceneManager.LoadScene(2);
             Time.timeScale = 1f;
+            subjectId = subject;
         }
 
         public void viewLeaderboard()

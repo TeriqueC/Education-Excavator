@@ -28,7 +28,8 @@ namespace EducationExcavator{
         // Start is called before the first frame update
         void Start()
         {
-            generator.generateQuestions(1);
+            playerId = Controller.playerId;
+            generator.generateQuestions(Controller.subjectId);//need to get subject id variable from controller
             updateQuestion();
             updateAnswers();
             canvas.SetActive(false);
