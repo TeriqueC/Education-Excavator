@@ -17,10 +17,7 @@ namespace EducationExcavator{
     public GameObject health;
     public GameObject scoreBox;
     public GameObject[] answerBoxes;
-    public GameObject asteroid_1;
-    public GameObject asteroid_2;
-    public GameObject asteroid_3;
-    public GameObject asteroid_4;
+    public GameObject[] asteroids;
 
     QuestionGenerator generator = new QuestionGenerator();
     int playerId;
@@ -36,10 +33,6 @@ namespace EducationExcavator{
             updateAnswers();
             canvas.SetActive(false);
             player.GetComponent<Player>();
-            //Debug.Log(asteroid_1.GetComponent<Asteroid>().setValue());
-            //Debug.Log(asteroid_2.GetComponent<Asteroid>().setValue());
-            //Debug.Log(asteroid_3.GetComponent<Asteroid>().setValue());
-            //Debug.Log(asteroid_4.GetComponent<Asteroid>().setValue());
         }
 
         // Update is called once per frame
@@ -48,22 +41,30 @@ namespace EducationExcavator{
             player.movement();
             player.shoot();
             checkHealth();
-
-            bool change = asteroid.checkQuestion();
-            if(change == true){
-                int asteroid_value = asteroids.GetComponent<Asteroid>().setValue();
-                Debug.Log(asteroid_value);
-                //checkAnswer(asteroid_value);
-               // updateQuestion();
-               // updateAnswers();
+            if(asteroid.changeQuestion()== true){
+                checkQuestion(true);
             }
         }
 
-        public void checkQuestion(){
-            asteroid_1.GetComponent<Asteroid>().checkQuestion();
-            asteroid_2.GetComponent<Asteroid>().checkQuestion();
-            asteroid_3.GetComponent<Asteroid>().checkQuestion();
-            asteroid_4.GetComponent<Asteroid>().checkQuestion();
+        public void checkQuestion(bool change){
+            if(change == true){
+                bool check = false;
+                for(int i =0; i< asteroids.Length; i++){
+                    check =  asteroids[i].GetComponent<Asteroid>().checkAnswer();
+                    if(check == true){
+                        confirmAnswer(asteroids[i].GetComponent<Asteroid>().asteroid_value);
+                        updateQuestion();
+                        updateAnswers();
+                        break;
+                    }
+                }
+                if(check == false){
+                    updateQuestion();
+                    updateAnswers();
+                    score = score-5;
+                    scoreBox.GetComponent<Text>().text="Score:  "+score;
+                }
+            }
         }
 
         public void checkHealth(){
@@ -75,8 +76,9 @@ namespace EducationExcavator{
             }
         }
 
-        public void checkAnswer(int value){ 
+        public void confirmAnswer(int value){ 
             string word = answerBoxes[value].GetComponent<Text>().text;
+            Debug.Log(value);
             string answer= word.Substring(4);
             bool correct = generator.checkAnswer(answer);
             if(correct == true){

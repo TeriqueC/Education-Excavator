@@ -13,6 +13,7 @@ namespace EducationExcavator
         public int asteroid_value;
 
         public static bool questionChange= false;
+        public bool answerCheck= false;
         
         public new Rigidbody2D rigidbody;
         //rigidbody allows physics to be aplied to gameobjects
@@ -25,14 +26,6 @@ namespace EducationExcavator
             //gets the component rigid body which applies physics to an object, attached to the gameobject
         }
 
-        public int setValue(){
-            bool correct = checkQuestion();
-            if( correct == true){
-                return asteroid_value;
-            }
-            return null;
-        }
-
         public void move()
         {
             rigidbody.velocity = new Vector2(0, -1*asteriod_speed);
@@ -43,9 +36,17 @@ namespace EducationExcavator
             transform.position= new Vector3(asteriod_xpos, asteroid_ypos);
         }//spawns asteroid in new location once a collision has taken place
 
-        public bool checkQuestion(){
+        public bool changeQuestion(){
           if(questionChange== true){
                questionChange=false;
+               return true;
+            }
+            return false;
+        }
+
+        public bool checkAnswer(){
+            if(answerCheck==true){
+                answerCheck = false;
                 return true;
             }
             return false;
@@ -54,7 +55,10 @@ namespace EducationExcavator
         public void OnTriggerEnter2D(Collider2D collision)
         {
             spawnPoint();
-            questionChange = true;
+            questionChange= true;
+            if(collision.gameObject.name == "Projectile(Clone)"){
+                answerCheck = true;
+            }
         }//manages collision between asteroid and player/boundary/bullet
 
     }
