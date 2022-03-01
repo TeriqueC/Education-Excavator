@@ -197,6 +197,10 @@ namespace EducationExcavator
         public string[] updateQuestion()
         {
             currentQuestion=list.removeStart();
+            if(currentQuestion == null){
+                generateQuestions(subjectId);
+                currentQuestion = list.removeStart();
+            }
             return currentQuestion;
         }
 
@@ -300,7 +304,6 @@ namespace EducationExcavator
             Command.ExecuteNonQuery();
 
             connection.Close();
-            list.addSort(questionId);
         }
     }
 }
