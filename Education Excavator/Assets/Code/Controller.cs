@@ -10,9 +10,9 @@ namespace EducationExcavator
         public static int playerId;
         public static int subjectId;
 
-        public void mainMenu(int Id){
+        public void mainMenu(){
             SceneManager.LoadScene(1);
-            playerId= Id;
+            playerId= LoginController.playerId;
         }
 
         public void quitGame()

@@ -14,7 +14,7 @@ namespace EducationExcavator{
         public InputField signupUserName;
         public InputField signupPassword;
 
-        static int playerId;
+        public static int playerId;
         string username;
         string password;
         Hashing hashing = new Hashing();
@@ -34,7 +34,7 @@ namespace EducationExcavator{
                 playerId = hashing.retrieveId(username);
                 Debug.Log("successful!!");
                 Controller controller = gameObject.AddComponent<Controller>();
-                controller.mainMenu(playerId);
+                controller.mainMenu();
             }
             else{
                 Debug.Log("wrong but working !!");
