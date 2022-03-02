@@ -182,7 +182,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Position
+  m_Text: 2.
 --- !u!222 &19926149
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Position
+  m_Text: 4.
 --- !u!222 &86908970
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1884,6 +1884,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78b37706dc2ff4ca9f606cae2350c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  names:
+  - {fileID: 352159183}
+  - {fileID: 710954582}
+  - {fileID: 1152772830}
+  - {fileID: 603931324}
+  - {fileID: 619485192}
+  scores:
+  - {fileID: 1809885786}
+  - {fileID: 110986934}
+  - {fileID: 121379083}
+  - {fileID: 68101674}
+  - {fileID: 218668141}
 --- !u!4 &991517050
 Transform:
   m_ObjectHideFlags: 0
@@ -1957,7 +1969,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1968,7 +1980,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Position
+  m_Text: 1.
 --- !u!222 &1068327862
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2477,7 +2489,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2488,7 +2500,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Position
+  m_Text: 5.
 --- !u!222 &1647099374
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2813,7 +2825,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2824,7 +2836,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Position
+  m_Text: 3.
 --- !u!222 &1770640364
 CanvasRenderer:
   m_ObjectHideFlags: 0
