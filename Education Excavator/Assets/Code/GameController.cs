@@ -22,7 +22,7 @@ namespace EducationExcavator{
     QuestionGenerator generator = new QuestionGenerator();
     int playerId;
     string Answer;
-    int score= 0;
+    public static int score= 0;
 
     public static bool isGamePaused = false;
         // Start is called before the first frame update
