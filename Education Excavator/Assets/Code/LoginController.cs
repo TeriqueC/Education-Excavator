@@ -51,6 +51,7 @@ namespace EducationExcavator{
                 if(conformation[1]== true){
                     Debug.Log("sign in was successful");
                     canvas.SetActive(false);
+                    playerId = hashing.retrieveId(username);
                     LeaderBoard leaderboard = new LeaderBoard();
                     leaderboard.setScores();
                 }

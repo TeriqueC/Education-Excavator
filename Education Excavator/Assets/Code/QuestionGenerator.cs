@@ -96,7 +96,6 @@ namespace EducationExcavator
     {
         string dbName = "URI=file:C:Education database - Copy.db";//the location at which the database is stored
         string sql;//string which will be used later to store sql queries
-        static int playerId = Controller.playerId;
         static int questionId;
         public int delay;
         static string[] currentQuestion = new string[2];
@@ -109,8 +108,7 @@ namespace EducationExcavator
             SqliteConnection connection = new SqliteConnection(dbName);//creates connection to database using the location stored above
             connection.Open();//opens connection
             SqliteCommand Command = connection.CreateCommand();//allows commands to be created for the database
-
-            sql = "SELECT question_status FROM Question_status WHERE question_id = " + data + " AND player_id = " + playerId + "";//a query to find the status of the question based on its id, which is passed in as the variable data
+            sql = "SELECT question_status FROM Question_status WHERE question_id = " + data + " AND player_id = " + LoginController.playerId + "";//a query to find the status of the question based on its id, which is passed in as the variable data
             Command.CommandText = sql;//sets the sql variable to the command text
             SqliteDataReader reader = Command.ExecuteReader();//execute query above
             reader.Read();//reads data from the database
@@ -266,7 +264,7 @@ namespace EducationExcavator
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT question_status FROM Question_status WHERE question_id = " + data + " AND player_id = "+playerId+"";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
+            sql = "SELECT question_status FROM Question_status WHERE question_id = " + data + " AND player_id = "+LoginController.playerId+"";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();
@@ -299,7 +297,7 @@ namespace EducationExcavator
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "UPDATE Question_status SET question_status = "+status+" WHERE question_id = "+questionId+" AND player_id = '"+playerId+"'";
+            sql = "UPDATE Question_status SET question_status = "+status+" WHERE question_id = "+questionId+" AND player_id = '"+LoginController.playerId+"'";
 
             Command.CommandText = sql;
             Command.ExecuteNonQuery();

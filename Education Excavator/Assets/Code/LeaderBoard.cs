@@ -11,13 +11,12 @@ namespace EducationExcavator{
         int subject_id;
 
         public void setScores(){
-            for(int i =1; i < 6; i++){
+            for(int i =1; i < 5; i++){
                 SqliteConnection connection = new SqliteConnection(dbName);
                 connection.Open();
                 SqliteCommand Command = connection.CreateCommand();
 
-                sql = "INSERT INTO Scores(player_id, player_score, subject_id) VALUES("+Controller.playerId+", "+0+", "+i+")";
-
+                sql = "INSERT INTO Scores(player_id, player_score, subject_id) VALUES("+LoginController.playerId+", "+0+", "+i+")";
                 Command.CommandText = sql;
                 Command.ExecuteNonQuery();
                 connection.Close();
