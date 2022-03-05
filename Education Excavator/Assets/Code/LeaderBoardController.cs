@@ -8,8 +8,13 @@ namespace EducationExcavator{
     {
         public GameObject[] names;
         public GameObject[] scores;
+        public GameObject printScore;
 
         LeaderBoard leaderBoard = new LeaderBoard();
+
+        void Start(){
+            printScore.gameObject.GetComponent<Text>().text = "Well Done!!! your score is: "+ GameController.score;
+        }
 
           public void updateTable(){
             int[] playerScores = leaderBoard.readScores();
