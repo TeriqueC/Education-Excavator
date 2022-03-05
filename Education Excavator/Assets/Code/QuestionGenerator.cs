@@ -98,6 +98,7 @@ namespace EducationExcavator
         string sql;//string which will be used later to store sql queries
         static int playerId = Controller.playerId;
         static int questionId;
+        public int delay;
         static string[] currentQuestion = new string[2];
         static int subjectId;
 
@@ -302,7 +303,6 @@ namespace EducationExcavator
 
             Command.CommandText = sql;
             Command.ExecuteNonQuery();
-
             connection.Close();
         }
     }

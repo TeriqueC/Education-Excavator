@@ -74,6 +74,8 @@ namespace EducationExcavator{
             string lives = life.ToString();
             health.GetComponent<Text>().text= "Health:  "+lives;
             if(life == 0){
+                LeaderBoard leaderBoard = new LeaderBoard();
+                leaderBoard.updateScore();
                 SceneManager.LoadScene(4);
             }
         }
