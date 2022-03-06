@@ -13,7 +13,7 @@ namespace EducationExcavator{
         LeaderBoard leaderBoard = new LeaderBoard();
 
         void Start(){
-            printScore.gameObject.GetComponent<Text>().text = "Well Done!!! your score is: "+ GameController.score;
+            printScore.gameObject.GetComponent<Text>().text = "Your current score is: "+ GameController.score;
             updateTable();
         }
 

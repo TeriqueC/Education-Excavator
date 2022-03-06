@@ -1113,7 +1113,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Well Done!!! your score is: '
+  m_Text: 'Your current score is: '
 --- !u!222 &538607619
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1727,17 +1727,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   names:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 352159183}
+  - {fileID: 710954582}
+  - {fileID: 1152772830}
+  - {fileID: 603931324}
+  - {fileID: 619485192}
   scores:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1809885786}
+  - {fileID: 110986934}
+  - {fileID: 121379083}
+  - {fileID: 68101674}
+  - {fileID: 218668141}
   printScore: {fileID: 538607616}
 --- !u!4 &789358209
 Transform:
