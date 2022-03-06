@@ -20,7 +20,7 @@ namespace EducationExcavator{
 
           public void updateGameover(){
             int[] playerScores = leaderBoard.readSubjectScores();
-            string[] playerNames = leaderBoard.readSubjectNames();
+            string[] playerNames = leaderBoard.readNames();
             for(int i = 0; i < scores.Length; i++){
                 scores[i].GetComponent<Text>().text= ""+playerScores[i]+"";
                 names[i].GetComponent<Text>().text= playerNames[i];
