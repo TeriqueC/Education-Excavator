@@ -15,16 +15,17 @@ namespace EducationExcavator{
 
         void Start(){
             printScore.gameObject.GetComponent<Text>().text = "Your current score is: "+ GameController.score;
-            updateTable();
+            updateGameover();
         }
 
           public void updateGameover(){
-            int[] playerScores = leaderBoard.readSubjectScores();
-            string[] playerNames = leaderBoard.readNames();
-            for(int i = 0; i < scores.Length; i++){
-                scores[i].GetComponent<Text>().text= ""+playerScores[i]+"";
+            //int[] playerScores = leaderBoard.readSubjectScores();
+            leaderBoard.readSubjectScores();
+            //string[] playerNames = leaderBoard.readNames();
+            /*for(int i = 0; i < scores.Length; i++){
+                //scores[i].GetComponent<Text>().text= ""+playerScores[i]+"";
                 names[i].GetComponent<Text>().text= playerNames[i];
-            }
+            }*/
           }
 
         public void updateTable(){

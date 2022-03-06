@@ -8,8 +8,8 @@ namespace EducationExcavator{
     {
         string sql;
         string dbName = "URI=file:C:Education database - Copy.db";
-        static int[] subject_ids = new int[5];
-        static int[] player_ids = new int[5];
+        int[] subject_ids = new int[5];
+        int[] player_ids = new int[5];
 
         public void setScores(){
             for(int i =1; i < 5; i++){
@@ -54,7 +54,7 @@ namespace EducationExcavator{
             return currentHighScore;
         }
 
-        public string[] readSubject(){
+        public string[] readSubject(){//fix this!!! return one at a time?
             string[] subjects = new string[5];
             for(int i=0; i< subjects.Length; i++){
                 SqliteConnection connection = new SqliteConnection(dbName);
@@ -72,52 +72,64 @@ namespace EducationExcavator{
 
         public int[] readScores(){
             int[] scores = new int[5];
-            for(int i = 0; i < scores.Length; i++){
-                SqliteConnection connection = new SqliteConnection(dbName);
-                connection.Open();
-                SqliteCommand Command = connection.CreateCommand();
-                sql = "SELECT player_score, player_id, subject_id FROM Scores ORDER BY player_score DESC";
-                Command.CommandText = sql;
-                SqliteDataReader reader = Command.ExecuteReader();
-                reader.Read();
-                scores[i] = reader.GetInt32(0);
-                player_ids[i] = reader.GetInt32(1);
-                subject_ids[i] = reader.GetInt32(2);
-                connection.Close();
+            int i=0;
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+            sql = "SELECT player_score, player_id, subject_id FROM Scores ORDER BY player_score DESC";
+            Command.CommandText = sql;
+            SqliteDataReader reader = Command.ExecuteReader();
+            while(reader.Read()){
+                scores[i] = reader.GetInt32(i);
+                player_ids[i] = reader.GetInt32(i+1);
+                subject_ids[i] = reader.GetInt32(i+2);
+                i++;
+                if(i > 5){
+                    break;
+                }
             }
+            connection.Close();
             return scores;
         }
 
-        public string[] readNames(){
+        public string[] readNames(){//fix this!!! return one name at a time?
             string[] names = new string[5];
-            for(int i=0; i< names.Length; i++){
-                SqliteConnection connection = new SqliteConnection(dbName);
-                connection.Open();
-                SqliteCommand Command = connection.CreateCommand();
-                sql = "SELECT player_name FROM Users WHERE player_id = "+player_ids[i]+"";
-                Command.CommandText = sql;
-                SqliteDataReader reader = Command.ExecuteReader();
-                reader.Read();
+            int i = 0;
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+            sql = "SELECT player_name FROM Users WHERE player_id = "+player_ids[i]+"";
+            Command.CommandText = sql;
+            SqliteDataReader reader = Command.ExecuteReader();
+            while(reader.Read()){
                 names[i] = reader.GetString(0);
-                connection.Close();
+                i++;
+                if(i > 5){
+                    break;
+                }
             }
+            connection.Close();
             return names;
         }
 
         public int[] readSubjectScores(){
             int[] scores = new int[5];
-            for(int i = 0; i < scores.Length; i++){
-                SqliteConnection connection = new SqliteConnection(dbName);
-                connection.Open();
-                SqliteCommand Command = connection.CreateCommand();
-                sql = "SELECT player_score, player_id FROM Scores WHERE subject_id = "+Controller.subjectId+"";
-                Command.CommandText = sql;
-                SqliteDataReader reader = Command.ExecuteReader();
-                reader.Read();
-                scores[i] = reader.GetInt32(0);
-                player_ids[i] = reader.GetInt32(1);
-                connection.Close();
+            int i=0;
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+            sql = "SELECT player_score, player_id FROM Scores WHERE subject_id = "+Controller.subjectId+"";
+            Command.CommandText = sql;
+            SqliteDataReader reader = Command.ExecuteReader();
+            while(reader.Read()){
+                scores[i] = reader.GetInt32(i);
+                player_ids[i] = reader.GetInt32(i+1);
+                i++;
+                if(i > 5){
+                    break;
+                }
             }
+            connection.Close();
             return scores;
         }
     }
