@@ -53,6 +53,22 @@ namespace EducationExcavator{
             return currentHighScore;
         }
 
+        public string[] readSubject(){
+            string[] subjects = new string[5];
+            for(int i=0; i< subjects.Length; i++){
+                SqliteConnection connection = new SqliteConnection(dbName);
+                connection.Open();
+                SqliteCommand Command = connection.CreateCommand();
+                sql = "SELECT player_name FROM Users";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
+                Command.CommandText = sql;
+                SqliteDataReader reader = Command.ExecuteReader();
+                reader.Read();
+                subjects[i] = reader.GetString(0);//stores the question as a string in the varible question
+                connection.Close();
+            }
+            return subjects;
+        }
+
         public int[] readScores(){
             int[] scores = new int[5];
             for(int i = 0; i < scores.Length; i++){
@@ -76,6 +92,38 @@ namespace EducationExcavator{
                 connection.Open();
                 SqliteCommand Command = connection.CreateCommand();
                 sql = "SELECT player_name FROM Users";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
+                Command.CommandText = sql;
+                SqliteDataReader reader = Command.ExecuteReader();
+                reader.Read();
+                names[i] = reader.GetString(0);//stores the question as a string in the varible question
+                connection.Close();
+            }
+            return names;
+        }
+
+        public int[] readSubjectScores(){
+            int[] scores = new int[5];
+            for(int i = 0; i < scores.Length; i++){
+                SqliteConnection connection = new SqliteConnection(dbName);
+                connection.Open();
+                SqliteCommand Command = connection.CreateCommand();
+                sql = "SELECT player_score FROM Scores WHERE subject_id = "+Controller.subjectId+"";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
+                Command.CommandText = sql;
+                SqliteDataReader reader = Command.ExecuteReader();
+                reader.Read();
+                scores[i] = reader.GetInt32(0);//stores the question as a string in the varible question
+                connection.Close();
+            }
+            return scores;
+        }
+
+        public string[] readSubjectNames(){
+            string[] names = new string[5];
+            for(int i=0; i< names.Length; i++){
+                SqliteConnection connection = new SqliteConnection(dbName);
+                connection.Open();
+                SqliteCommand Command = connection.CreateCommand();
+                sql = "SELECT player_name FROM Users WHERE subject_id ="+Controller.subjectId+"";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
                 Command.CommandText = sql;
                 SqliteDataReader reader = Command.ExecuteReader();
                 reader.Read();

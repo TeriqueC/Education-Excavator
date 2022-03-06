@@ -8,6 +8,7 @@ namespace EducationExcavator{
     {
         public GameObject[] names;
         public GameObject[] scores;
+        public GameObject[] subjects;
         public GameObject printScore;
 
         LeaderBoard leaderBoard = new LeaderBoard();
@@ -17,12 +18,23 @@ namespace EducationExcavator{
             updateTable();
         }
 
-          public void updateTable(){
-            int[] playerScores = leaderBoard.readScores();
-            string[] playerNames = leaderBoard.readNames();
+          public void updateGameover(){
+            int[] playerScores = leaderBoard.readSubjectScores();
+            string[] playerNames = leaderBoard.readSubjectNames();
             for(int i = 0; i < scores.Length; i++){
                 scores[i].GetComponent<Text>().text= ""+playerScores[i]+"";
                 names[i].GetComponent<Text>().text= playerNames[i];
+            }
+          }
+
+        public void updateTable(){
+        int[] playerScores = leaderBoard.readScores();
+        string[] playerNames = leaderBoard.readNames();
+        string[] scoreSubject = leaderBoard.readSubject();
+            for(int i = 0; i < scores.Length; i++){
+                scores[i].GetComponent<Text>().text= ""+playerScores[i]+"";
+                names[i].GetComponent<Text>().text= playerNames[i];
+                subjects[i].GetComponent<Text>().text = scoreSubject[i];
             }
         }
     }
