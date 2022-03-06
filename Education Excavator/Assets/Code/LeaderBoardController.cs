@@ -14,6 +14,7 @@ namespace EducationExcavator{
 
         void Start(){
             printScore.gameObject.GetComponent<Text>().text = "Well Done!!! your score is: "+ GameController.score;
+            updateTable();
         }
 
           public void updateTable(){

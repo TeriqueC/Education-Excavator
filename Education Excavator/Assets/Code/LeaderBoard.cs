@@ -35,6 +35,7 @@ namespace EducationExcavator{
                 Command.CommandText = sql;
                 Command.ExecuteNonQuery();
                 connection.Close();
+                Debug.Log("update score working");
             }
         }
 

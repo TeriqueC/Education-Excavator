@@ -1055,7 +1055,7 @@ GameObject:
   - component: {fileID: 538607619}
   - component: {fileID: 538607618}
   m_Layer: 5
-  m_Name: Text
+  m_Name: printScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1738,7 +1738,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  printScore: {fileID: 1709830710}
+  printScore: {fileID: 538607616}
 --- !u!4 &789358209
 Transform:
   m_ObjectHideFlags: 0
