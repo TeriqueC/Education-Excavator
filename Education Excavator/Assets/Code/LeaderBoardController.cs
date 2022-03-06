@@ -23,8 +23,8 @@ namespace EducationExcavator{
             leaderBoard.readSubjectScores();
             //string[] playerNames = leaderBoard.readNames();
             /*for(int i = 0; i < scores.Length; i++){
-                //scores[i].GetComponent<Text>().text= ""+playerScores[i]+"";
-                names[i].GetComponent<Text>().text= playerNames[i];
+                //scores[i].GetComponent<Text>().text= ""+playerScores[i]+""; perhapes call scores method multiple times
+                names[i].GetComponent<Text>().text= playerNames[i]; perhaps use name method multiple times
             }*/
           }
 
