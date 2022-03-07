@@ -64,6 +64,7 @@ namespace EducationExcavator{
             sql = "SELECT subject FROM Subject WHERE subject_id = "+subject_ids[i]+"";
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
+            reader.Read();
             string subject = reader.GetString(0);
             connection.Close();
             return subject;
@@ -99,9 +100,9 @@ namespace EducationExcavator{
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
             sql = "SELECT player_name FROM Users WHERE player_id = "+player_ids[i]+"";
-            Debug.Log(player_ids[i]);
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
+            reader.Read();
             string name = reader.GetString(0);
             connection.Close();
             return name;
@@ -113,7 +114,7 @@ namespace EducationExcavator{
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
-            sql = "SELECT player_score, player_id FROM Scores WHERE subject_id = "+1+"";
+            sql = "SELECT player_score, player_id FROM Scores WHERE subject_id = "+Controller.subjectId+"";
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             while(reader.Read()){
