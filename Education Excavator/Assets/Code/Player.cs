@@ -52,11 +52,6 @@ namespace EducationExcavator
         {
             player_health = player_health - 1;
             string lives = player_health.ToString();
-            
-            if (player_health == 0)
-            {
-                Debug.Log("game over");
-            }
         }//this method checks for collisions that take place in the game
     }
 }

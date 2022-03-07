@@ -196,9 +196,7 @@ namespace EducationExcavator
         public string[] updateQuestion()
         {
             int previousId = questionId;
-            Debug.Log("previousID"+previousId);
             currentQuestion=list.removeStart();
-            Debug.Log("questionID"+ questionId);
             if(previousId != 0){
                 list.addSort(previousId);
             }
