@@ -76,6 +76,7 @@ namespace EducationExcavator{
             if(life == 0){
                 LeaderBoard leaderBoard = new LeaderBoard();
                 leaderBoard.updateScore();
+                Controller.gameOver = true;
                 SceneManager.LoadScene(4);
             }
         }

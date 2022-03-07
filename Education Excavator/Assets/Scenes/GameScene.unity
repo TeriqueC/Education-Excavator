@@ -2536,8 +2536,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0014954, y: -14.49}
-  m_SizeDelta: {x: 487.29, y: 30}
+  m_AnchoredPosition: {x: -0.00037789, y: -14.49}
+  m_SizeDelta: {x: 497.29, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1563838529
 MonoBehaviour:
@@ -2561,7 +2561,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -3279,8 +3279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4de22239726cd747bba9deec0428176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
-  subjectId: 0
 --- !u!4 &2039488520
 Transform:
   m_ObjectHideFlags: 0

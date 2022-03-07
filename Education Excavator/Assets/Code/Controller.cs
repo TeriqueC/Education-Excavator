@@ -9,9 +9,11 @@ namespace EducationExcavator
     {
         public static int playerId;
         public static int subjectId;
+        public static bool gameOver;
 
         public void mainMenu(){
             SceneManager.LoadScene(1);
+            gameOver = false;
             playerId= LoginController.playerId;
         }
 
