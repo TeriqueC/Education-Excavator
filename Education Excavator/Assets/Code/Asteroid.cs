@@ -6,7 +6,7 @@ namespace EducationExcavator
 {
     public class Asteroid : MonoBehaviour
     {
-        private float asteriod_speed= 0.45f;
+        private float asteriod_speed= 0.3f;
         private float asteriod_xpos;
         private float asteroid_ypos = 2f;
 
