@@ -38,8 +38,8 @@ namespace EducationExcavator
 
         public bool changeQuestion(){
           if(questionChange== true){
-               questionChange=false;
-               return true;
+                questionChange=false;
+                return true;
             }
             return false;
         }
