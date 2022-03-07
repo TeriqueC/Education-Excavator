@@ -9,7 +9,7 @@ namespace EducationExcavator
         //also allows interactions with components attached to GameObjects
     {
         private float player_speed=9;
-        private int player_health=3;
+        public static int player_health=3;
         private float player_xpos;
         private float player_ypos;
 
@@ -57,9 +57,5 @@ namespace EducationExcavator
                 Debug.Log("game over");
             }
         }//this method checks for collisions that take place in the game
-
-        public int checkLives(){
-            return player_health;
-        }
     }
 }

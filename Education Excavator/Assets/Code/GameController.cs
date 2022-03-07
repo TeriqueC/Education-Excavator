@@ -70,7 +70,7 @@ namespace EducationExcavator{
         }
 
         public void checkHealth(){
-            int life = player.checkLives();
+            int life = Player.player_health;
             string lives = life.ToString();
             health.GetComponent<Text>().text= "Health:  "+lives;
             if(life == 0){

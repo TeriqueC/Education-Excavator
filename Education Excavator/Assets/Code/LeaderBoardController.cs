@@ -15,7 +15,12 @@ namespace EducationExcavator{
 
         void Start(){
             printScore.gameObject.GetComponent<Text>().text = "Your current score is: "+ GameController.score;
-            updateGameover();
+            if(Player.player_health == 0){
+                updateGameover();
+            }
+            else{
+                updateTable();
+            }
         }
 
           public void updateGameover(){
