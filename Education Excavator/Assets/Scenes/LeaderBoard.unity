@@ -2029,7 +2029,12 @@ MonoBehaviour:
   - {fileID: 1899444090}
   - {fileID: 1334018841}
   - {fileID: 1934337166}
-  subjects: []
+  subjects:
+  - {fileID: 1643350082}
+  - {fileID: 1524171941}
+  - {fileID: 1401558287}
+  - {fileID: 1008178137}
+  - {fileID: 934801194}
   printScore: {fileID: 351826239}
 --- !u!4 &1025495641
 Transform:

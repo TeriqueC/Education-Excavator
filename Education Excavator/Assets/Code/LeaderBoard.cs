@@ -55,6 +55,9 @@ namespace EducationExcavator{
         }
 
         public string readSubject(int i){
+            if(subject_ids[i] == 0){
+                return " ";
+            }
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
@@ -77,19 +80,15 @@ namespace EducationExcavator{
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             while(reader.Read()){
-                scores[i] = reader.GetInt32(i);
-                player_ids[i] = reader.GetInt32(i+1);
-                subject_ids[i] = reader.GetInt32(i+2);
-                Debug.Log(i);
+                scores[i] = reader.GetInt32(0);
+                player_ids[i] = reader.GetInt32(1);
+                subject_ids[i] = reader.GetInt32(2);
                 i++;
-                if(i > 5){
+                if(i >= 5){
                     break;
                 }
             }
             connection.Close();
-            for(int j = 0; j < subject_ids.Length; j++){
-                Debug.Log(subject_ids[j]);
-            }
             return scores;
         }
 
@@ -119,10 +118,10 @@ namespace EducationExcavator{
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             while(reader.Read()){
-                scores[i] = reader.GetInt32(i);
-                player_ids[i] = reader.GetInt32(i+1);
+                scores[i] = reader.GetInt32(0);
+                player_ids[i] = reader.GetInt32(1);
                 i++;
-                if(i > 5){
+                if(i >= 5){
                     break;
                 }
             }
