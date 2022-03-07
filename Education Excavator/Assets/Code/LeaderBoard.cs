@@ -8,8 +8,8 @@ namespace EducationExcavator{
     {
         string sql;
         string dbName = "URI=file:C:Education database - Copy.db";
-        int[] subject_ids = new int[5];
-        int[] player_ids = new int[5];
+        static int[] subject_ids = new int[5];
+        static int[] player_ids = new int[5];
 
         public void setScores(){
             for(int i =1; i < 5; i++){
@@ -55,15 +55,15 @@ namespace EducationExcavator{
         }
 
         public string readSubject(int i){
+            if(subject_ids[i] == 0){
+                return " ";
+            }
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
             sql = "SELECT subject FROM Subject WHERE subject_id = "+subject_ids[i]+"";
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
-            if(reader.GetString == null){
-                return " ";
-            }
             string subject = reader.GetString(0);
             connection.Close();
             return subject;
@@ -92,15 +92,16 @@ namespace EducationExcavator{
         }
 
         public string readNames(int i){
+            if(player_ids[i] == 0){
+                return " ";
+            }
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
             sql = "SELECT player_name FROM Users WHERE player_id = "+player_ids[i]+"";
+            Debug.Log(player_ids[i]);
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
-            if(reader.GetString == null){
-                return " ";
-            }
             string name = reader.GetString(0);
             connection.Close();
             return name;
@@ -112,7 +113,7 @@ namespace EducationExcavator{
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
-            sql = "SELECT player_score, player_id FROM Scores WHERE subject_id = "+Controller.subjectId+"";
+            sql = "SELECT player_score, player_id FROM Scores WHERE subject_id = "+1+"";
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             while(reader.Read()){
