@@ -8,8 +8,8 @@ namespace EducationExcavator
         //MonoBehaviour allows the unity engine to help with instantiating and calling different methods within the class
         //also allows interactions with components attached to GameObjects
     {
-        private float player_speed=10;
-        public static int player_health=5;
+        private float player_speed=9;
+        public static int player_health=3;
         private float player_xpos;
         private float player_ypos;
 
