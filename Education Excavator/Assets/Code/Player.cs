@@ -20,6 +20,7 @@ namespace EducationExcavator
         public void Awake()
         {
             rigidbody = GetComponent<Rigidbody2D>();
+            player_health = 3;
             //gets the component rigid body which applies physics to an object, attached to the gameobject
         }// the Awake method is called before the first frame update 
 

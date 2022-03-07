@@ -55,9 +55,6 @@ namespace EducationExcavator{
         }
 
         public string readSubject(int i){
-            if(subject_ids[i] == 0){
-                return " ";
-            }
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
@@ -83,12 +80,16 @@ namespace EducationExcavator{
                 scores[i] = reader.GetInt32(i);
                 player_ids[i] = reader.GetInt32(i+1);
                 subject_ids[i] = reader.GetInt32(i+2);
+                Debug.Log(i);
                 i++;
                 if(i > 5){
                     break;
                 }
             }
             connection.Close();
+            for(int j = 0; j < subject_ids.Length; j++){
+                Debug.Log(subject_ids[j]);
+            }
             return scores;
         }
 
