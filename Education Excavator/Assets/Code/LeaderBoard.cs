@@ -54,20 +54,19 @@ namespace EducationExcavator{
             return currentHighScore;
         }
 
-        public string[] readSubject(){//fix this!!! return one at a time?
-            string[] subjects = new string[5];
-            for(int i=0; i< subjects.Length; i++){
-                SqliteConnection connection = new SqliteConnection(dbName);
-                connection.Open();
-                SqliteCommand Command = connection.CreateCommand();
-                sql = "SELECT subject FROM Users WHERE subject_id = "+subject_ids[i]+"";
-                Command.CommandText = sql;
-                SqliteDataReader reader = Command.ExecuteReader();
-                reader.Read();
-                subjects[i] = reader.GetString(0);
-                connection.Close();
+        public string readSubject(int i){
+            SqliteConnection connection = new SqliteConnection(dbName);
+            connection.Open();
+            SqliteCommand Command = connection.CreateCommand();
+            sql = "SELECT subject FROM Subject WHERE subject_id = "+subject_ids[i]+"";
+            Command.CommandText = sql;
+            SqliteDataReader reader = Command.ExecuteReader();
+            if(reader.GetString == null){
+                return " ";
             }
-            return subjects;
+            string subject = reader.GetString(0);
+            connection.Close();
+            return subject;
         }
 
         public int[] readScores(){
@@ -92,24 +91,19 @@ namespace EducationExcavator{
             return scores;
         }
 
-        public string[] readNames(){//fix this!!! return one name at a time?
-            string[] names = new string[5];
-            int i = 0;
+        public string readNames(int i){
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
             sql = "SELECT player_name FROM Users WHERE player_id = "+player_ids[i]+"";
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
-            while(reader.Read()){
-                names[i] = reader.GetString(0);
-                i++;
-                if(i > 5){
-                    break;
-                }
+            if(reader.GetString == null){
+                return " ";
             }
+            string name = reader.GetString(0);
             connection.Close();
-            return names;
+            return name;
         }
 
         public int[] readSubjectScores(){

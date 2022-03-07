@@ -19,23 +19,19 @@ namespace EducationExcavator{
         }
 
           public void updateGameover(){
-            //int[] playerScores = leaderBoard.readSubjectScores();
-            leaderBoard.readSubjectScores();
-            //string[] playerNames = leaderBoard.readNames();
-            /*for(int i = 0; i < scores.Length; i++){
-                //scores[i].GetComponent<Text>().text= ""+playerScores[i]+""; perhapes call scores method multiple times
-                names[i].GetComponent<Text>().text= playerNames[i]; perhaps use name method multiple times
-            }*/
+            int[] playerScores = leaderBoard.readSubjectScores();
+            for(int i = 0; i < scores.Length; i++){
+                scores[i].GetComponent<Text>().text= ""+playerScores[i]+"";
+                names[i].GetComponent<Text>().text= leaderBoard.readNames(i);
+            }
           }
 
         public void updateTable(){
         int[] playerScores = leaderBoard.readScores();
-        string[] playerNames = leaderBoard.readNames();
-        string[] scoreSubject = leaderBoard.readSubject();
             for(int i = 0; i < scores.Length; i++){
                 scores[i].GetComponent<Text>().text= ""+playerScores[i]+"";
-                names[i].GetComponent<Text>().text= playerNames[i];
-                subjects[i].GetComponent<Text>().text = scoreSubject[i];
+                names[i].GetComponent<Text>().text= leaderBoard.readNames(i);
+                subjects[i].GetComponent<Text>().text = leaderBoard.readSubject(i);
             }
         }
     }
