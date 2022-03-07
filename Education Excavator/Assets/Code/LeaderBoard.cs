@@ -114,7 +114,7 @@ namespace EducationExcavator{
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
-            sql = "SELECT player_score, player_id FROM Scores WHERE subject_id = "+Controller.subjectId+"";
+            sql = "SELECT player_score, player_id FROM Scores WHERE subject_id = "+Controller.subjectId+" ORDER BY player_score DESC";
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             while(reader.Read()){

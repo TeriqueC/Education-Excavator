@@ -206,7 +206,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 641545842}
         m_TargetAssemblyTypeName: EducationExcavator.Controller, Assembly-CSharp
         m_MethodName: quitGame
         m_Mode: 1
@@ -1938,7 +1938,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 641545842}
         m_TargetAssemblyTypeName: EducationExcavator.Controller, Assembly-CSharp
         m_MethodName: mainMenu
         m_Mode: 1
@@ -2029,6 +2029,7 @@ MonoBehaviour:
   - {fileID: 1899444090}
   - {fileID: 1334018841}
   - {fileID: 1934337166}
+  subjects: []
   printScore: {fileID: 351826239}
 --- !u!4 &1025495641
 Transform:
