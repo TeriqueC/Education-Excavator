@@ -99,7 +99,7 @@ namespace EducationExcavator
         static int questionId;
         public int delay;
         static string[] currentQuestion = new string[2];
-        static int subjectId;
+        static int subjectId = Controller.subjectId;
 
         public LinkedList list = new LinkedList();//instance of my Linked list class
 
@@ -212,7 +212,8 @@ namespace EducationExcavator
             answers[Random.Range(0, 3)] = currentQuestion[1];
             for (int i = 0; i < 3; i++)
             {
-                answerId[i] = Random.Range(1, counter[length-1]);
+                //answerId[i] = Random.Range(1, counter[length-1]);
+                answerId[i] = counter[Random.Range(1, length-1)];
             }
             for (int i= 0; i < answers.Length; i++)
             {
