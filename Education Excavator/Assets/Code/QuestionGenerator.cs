@@ -85,15 +85,8 @@ namespace EducationExcavator
                 QuestionGenerator generator = new QuestionGenerator();//object of my question generation class
                 question[0] = generator.getQuestion(start.data[0]);//uses the int in the array[0] (primary key for db) in the print question method, and stores results in a string called question
                 question[1] = generator.getAnswer(start.data[0]);
-                generator.setStatus(start.data[0]);
                 start = start.next; // if the list is not empty then the next node is set to replace the previous starting node of the list
                 return question;//returns the string question
-            }
-        }
-
-        public void clear(){
-            while(start != null){
-                start = start.next;
             }
         }
     }
@@ -102,10 +95,9 @@ namespace EducationExcavator
     {
         string dbName = "URI=file:C:Education database - Copy.db";//the location at which the database is stored
         string sql;//string which will be used later to store sql queries
-        static int questionId;
+        public static int questionId;
         public int delay;
         static string[] currentQuestion = new string[2];
-        static int subjectId = Controller.subjectId;
 
         public LinkedList list = new LinkedList();//instance of my Linked list class
 
@@ -128,7 +120,7 @@ namespace EducationExcavator
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT COUNT(question_id) FROM Question WHERE subject_id = " + subjectId + "";//counts the total number of records I have in my database from the question_id field
+            sql = "SELECT COUNT(question_id) FROM Question WHERE subject_id = " + Controller.subjectId + "";//counts the total number of records I have in my database from the question_id field
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();
@@ -145,7 +137,7 @@ namespace EducationExcavator
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT question_id FROM Question WHERE subject_id = "+subjectId+"";//counts the total number of records I have in my database from the question_id field
+            sql = "SELECT question_id FROM Question WHERE subject_id = "+Controller.subjectId+"";//counts the total number of records I have in my database from the question_id field
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             while (reader.Read())
@@ -190,7 +182,6 @@ namespace EducationExcavator
 
         public void generateQuestions()
         {
-            list.clear();
             int[] counter =setCounter();
             for (int i = 0; i < counter.Length; i++)//uses a for loop to repeat this section of code until all data has been added to the queue
             {
@@ -199,12 +190,13 @@ namespace EducationExcavator
             
         }
 
-
-
         public string[] updateQuestion()
         {
             int previousId = questionId;
             currentQuestion=list.removeStart();
+            /*if(currentQuestion == null){
+                generateQuestions();
+            }*/
             if(previousId != 0){
                 list.addSort(previousId);
             }
@@ -265,21 +257,6 @@ namespace EducationExcavator
             connection.Close();
         }
 
-        public int setStatus(int data)
-        {
-            SqliteConnection connection = new SqliteConnection(dbName);
-            connection.Open();
-            SqliteCommand Command = connection.CreateCommand();
-
-            sql = "SELECT question_status FROM Question_status WHERE question_id = " + data + " AND player_id = "+LoginController.playerId+"";//uses the data passed in from the linked list class, that data is then used as the question id which will help to find the question
-            Command.CommandText = sql;
-            SqliteDataReader reader = Command.ExecuteReader();
-            reader.Read();
-            int status = reader.GetInt32(0);//stores the question as a string in the varible question
-            connection.Close();
-            return status;
-        }
-
         public bool checkAnswer(string answer){
             if (answer == currentQuestion[1])
             {
@@ -292,11 +269,11 @@ namespace EducationExcavator
 
         public void updateStatus(bool correct)
         {
-            int status = setStatus(questionId);
+            int status = setData(questionId);
             if (correct==true && status !=0){
                 status = status-1;
             }
-            else if (status != 3)
+            else if (status != 2)
             {
                 status = status+1;
             }
