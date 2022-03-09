@@ -13,7 +13,7 @@ namespace EducationExcavator
         private float player_xpos;
         private float player_ypos;
 
-        private new Rigidbody2D rigidbody;
+        Rigidbody2D rigidbody;
         //rigidbody allows physics to be aplied to gameobjects
         public GameObject projectile;
 

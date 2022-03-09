@@ -15,7 +15,7 @@ namespace EducationExcavator
         public static bool questionChange= false;
         public bool answerCheck= false;
         
-        public new Rigidbody2D rigidbody;
+        Rigidbody2D rigidbody;
         //rigidbody allows physics to be aplied to gameobjects
 
         // Start is called before the first frame update
