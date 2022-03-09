@@ -96,7 +96,6 @@ namespace EducationExcavator
         string dbName = "URI=file:C:Education database - Copy.db";//the location at which the database is stored
         string sql;//string which will be used later to store sql queries
         public static int questionId;
-        public int delay;
         static string[] currentQuestion = new string[2];
 
         public LinkedList list = new LinkedList();//instance of my Linked list class
@@ -197,8 +196,10 @@ namespace EducationExcavator
             if(currentQuestion == null){
                 generateQuestions();
             }
-            if(setData(previousId) == 3){
+            if(previousId!=0){
+                if(setData(previousId) == 3){
                 list.addSort(previousId);
+                }
             }
             return currentQuestion;
         }
