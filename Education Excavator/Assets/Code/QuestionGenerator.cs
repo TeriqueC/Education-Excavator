@@ -194,10 +194,10 @@ namespace EducationExcavator
         {
             int previousId = questionId;
             currentQuestion=list.removeStart();
-            /*if(currentQuestion == null){
+            if(currentQuestion == null){
                 generateQuestions();
-            }*/
-            if(previousId != 0){
+            }
+            if(setData(previousId) == 2){
                 list.addSort(previousId);
             }
             return currentQuestion;
