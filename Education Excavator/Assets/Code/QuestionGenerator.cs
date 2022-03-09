@@ -202,7 +202,6 @@ namespace EducationExcavator
             }
             return currentQuestion;
         }
-
         public string[] updateAnswers()
         {
             string[] answers = new string[4];
@@ -212,7 +211,6 @@ namespace EducationExcavator
             answers[Random.Range(0, 3)] = currentQuestion[1];
             for (int i = 0; i < 3; i++)
             {
-                //answerId[i] = Random.Range(1, counter[length-1]);
                 answerId[i] = counter[Random.Range(1, length-1)];
             }
             for (int i= 0; i < answers.Length; i++)

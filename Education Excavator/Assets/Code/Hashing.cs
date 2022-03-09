@@ -36,7 +36,7 @@ namespace EducationExcavator
         {
             bool size;
             int length = word.Length;
-            if (length > 8){
+            if (length < 6){
                 size = false;
                 return size;
             }

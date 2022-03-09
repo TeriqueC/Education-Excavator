@@ -13,6 +13,8 @@ namespace EducationExcavator{
         public InputField loginPassword;
         public InputField signupUserName;
         public InputField signupPassword;
+        public Text signupText;
+        public Text loginText;
 
         public static int playerId;
         string username;
@@ -32,12 +34,11 @@ namespace EducationExcavator{
             bool conformation = hashing.CheckDetails(username, passcode);
             if(conformation == true){
                 playerId = hashing.retrieveId(username);
-                Debug.Log("successful!!");
                 Controller controller = gameObject.AddComponent<Controller>();
                 controller.mainMenu();
             }
             else{
-                Debug.Log("wrong but working !!");
+                loginText.text= "Your password or username is incorrect";
             }
         }
 
@@ -49,18 +50,17 @@ namespace EducationExcavator{
             bool[] conformation = hashing.insertDetails(username, passcode, len);
             if(conformation[0] == true){
                 if(conformation[1]== true){
-                    Debug.Log("sign in was successful");
                     canvas.SetActive(false);
                     playerId = hashing.retrieveId(username);
                     LeaderBoard leaderboard = new LeaderBoard();
                     leaderboard.setScores();
                 }
                 else{
-                    Debug.Log("change password!");
+                    signupText.text="Change Your password!";
                 }
             }
             else{
-                Debug.Log("change username");
+                signupText.text = "Change your username!";
             }
         }
 
