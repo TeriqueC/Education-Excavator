@@ -29,7 +29,7 @@ namespace EducationExcavator{
         void Start()
         {
             playerId = Controller.playerId;
-            generator.generateQuestions(Controller.subjectId);//need to get subject id variable from controller
+            generator.generateQuestions();
             updateQuestion();
             updateAnswers();
             canvas.SetActive(false);

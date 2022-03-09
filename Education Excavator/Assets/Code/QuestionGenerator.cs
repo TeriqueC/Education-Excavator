@@ -90,6 +90,12 @@ namespace EducationExcavator
                 return question;//returns the string question
             }
         }
+
+        public void clear(){
+            while(start != null){
+                start = start.next;
+            }
+        }
     }
 
     public class QuestionGenerator
@@ -182,9 +188,9 @@ namespace EducationExcavator
             return answer;
         }
 
-        public void generateQuestions(int subjectID)
+        public void generateQuestions()
         {
-            subjectId = subjectID;
+            list.clear();
             int[] counter =setCounter();
             for (int i = 0; i < counter.Length; i++)//uses a for loop to repeat this section of code until all data has been added to the queue
             {
@@ -192,6 +198,8 @@ namespace EducationExcavator
             }
             
         }
+
+
 
         public string[] updateQuestion()
         {
