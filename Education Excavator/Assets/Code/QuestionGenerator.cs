@@ -195,6 +195,7 @@ namespace EducationExcavator
             currentQuestion=list.removeStart();
             if(currentQuestion == null){
                 generateQuestions();
+                currentQuestion =list.removeStart();
             }
             if(previousId!=0){
                 if(setData(previousId) == 3){

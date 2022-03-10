@@ -26,6 +26,7 @@ namespace EducationExcavator
         {
             subjectId = subject;
             GameController.score = 0;
+            QuestionGenerator.questionId = 0;
             SceneManager.LoadScene(2);
             Time.timeScale = 1f;
         }
