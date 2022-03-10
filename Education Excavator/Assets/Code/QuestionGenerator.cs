@@ -93,7 +93,7 @@ namespace EducationExcavator
 
     public class QuestionGenerator
     {
-        string dbName = "URI=file:C:Education database - Copy.db";//the location at which the database is stored
+        string dbName = "URI=file:C:Education database.db";//the location at which the database is stored
         string sql;//string which will be used later to store sql queries
         public static int questionId;
         static string[] currentQuestion = new string[2];

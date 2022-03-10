@@ -7,7 +7,7 @@ namespace EducationExcavator{
     public class LeaderBoard
     {
         string sql;
-        string dbName = "URI=file:C:Education database - Copy.db";
+        string dbName = "URI=file:C:Education database.db";
         static int[] subject_ids = new int[5];
         static int[] player_ids = new int[5];
 

@@ -9,7 +9,7 @@ namespace EducationExcavator
 {
     class Hashing
     {
-        string dbName = "URI=file:C:Education database - Copy.db";
+        string dbName = "URI=file:C:Education database.db";
         string sql;
 
         int hashValue = 0;
