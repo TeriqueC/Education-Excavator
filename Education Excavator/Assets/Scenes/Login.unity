@@ -2497,9 +2497,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2071116328}
-        m_TargetAssemblyTypeName: EducationExcavator.LoginController, Assembly-CSharp
-        m_MethodName: exit
+      - m_Target: {fileID: 2071116330}
+        m_TargetAssemblyTypeName: EducationExcavator.Controller, Assembly-CSharp
+        m_MethodName: quitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3893,6 +3893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2071116329}
   - component: {fileID: 2071116328}
+  - component: {fileID: 2071116330}
   m_Layer: 0
   m_Name: controller
   m_TagString: Untagged
@@ -3935,3 +3936,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2071116330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071116327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4de22239726cd747bba9deec0428176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
