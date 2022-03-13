@@ -213,7 +213,7 @@ namespace EducationExcavator
             answers[Random.Range(0, 3)] = currentQuestion[1];
             for (int i = 0; i < 3; i++)
             {
-                answerId[i] = counter[Random.Range(1, length-1)];
+                answerId[i] = counter[Random.Range(0, length-1)];
             }
             for (int i= 0; i < answers.Length; i++)
             {

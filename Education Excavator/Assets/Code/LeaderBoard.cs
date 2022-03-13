@@ -25,8 +25,7 @@ namespace EducationExcavator{
         }
 
         public void updateScore(){
-            int currentHighScore = currentScore();
-            if(GameController.score > currentHighScore){
+            if(GameController.score > currentScore()){
                 SqliteConnection connection = new SqliteConnection(dbName);
                 connection.Open();
                 SqliteCommand Command = connection.CreateCommand();
@@ -44,7 +43,7 @@ namespace EducationExcavator{
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT player_score FROM Scores WHERE player_id ="+Controller.playerId+"";
+            sql = "SELECT player_score FROM Scores WHERE player_id ="+Controller.playerId+" AND subject_id ="+Controller.subjectId+"";
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();
