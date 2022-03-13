@@ -198,7 +198,7 @@ namespace EducationExcavator
                 currentQuestion =list.removeStart();
             }
             if(previousId!=0){
-                if(setData(previousId) == 3){
+                if(setData(previousId) == 2){
                 list.addSort(previousId);
                 }
             }
@@ -275,7 +275,7 @@ namespace EducationExcavator
             if (correct==true && status !=0){
                 status = status-1;
             }
-            else if (status != 3)
+            else if (status != 2)
             {
                 status = status+1;
             }
