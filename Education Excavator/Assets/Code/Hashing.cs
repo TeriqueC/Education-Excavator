@@ -46,7 +46,6 @@ namespace EducationExcavator
 
         public bool[] insertDetails(string userName, int password, bool len)
         {
-            setCounter();
             bool userCollision = usernameCollision(userName);
             bool[] confirm = new bool[2];
             if(len == true && userCollision==false)
@@ -80,7 +79,6 @@ namespace EducationExcavator
 
         public bool CheckDetails(string userName, int password)
         {
-           setCounter();
            if (usernameCollision(userName) == true)
            {
                 SqliteConnection connection = new SqliteConnection(dbName);
@@ -120,66 +118,44 @@ namespace EducationExcavator
             return playerId;
         }
 
-        public void setCounter()
+         public bool usernameCollision(string newUsername)
+        {
+           SqliteConnection connection = new SqliteConnection(dbName);
+           connection.Open();
+           SqliteCommand Command = connection.CreateCommand();
+
+           sql = "SELECT user_id FROM passwords WHERE user_name =" + newUsername + "";
+
+           Command.CommandText = sql;
+           SqliteDataReader reader = Command.ExecuteReader();
+           reader.Read();
+           if (reader.GetValue(0) == null)
+           {
+                connection.Close();
+                return false;
+            }
+           connection.Close();
+           return true;
+        }
+
+        public bool passwordCollision(int newPassword)
         {
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
             SqliteCommand Command = connection.CreateCommand();
 
-            sql = "SELECT COUNT(player_id) FROM Users";
+            sql = "SELECT user_id FROM passwords WHERE user_name =" + newPassword + "";
 
             Command.CommandText = sql;
             SqliteDataReader reader = Command.ExecuteReader();
             reader.Read();
-            counter = reader.GetInt32(0);
+            if (reader.GetValue(0) == null)
+            {
+                connection.Close();
+                return false;
+            }
             connection.Close();
-        }
-        public bool usernameCollision(string newUsername)
-        {
-            bool collision = false;
-            for (int i = 1; i <= counter; i++)
-            {
-                SqliteConnection connection = new SqliteConnection(dbName);
-                connection.Open();
-                SqliteCommand Command = connection.CreateCommand();
-
-                sql = "SELECT player_name FROM Users WHERE player_id =" + i + "";
-
-                Command.CommandText = sql;
-                SqliteDataReader reader = Command.ExecuteReader();
-                reader.Read();
-                string currentUsername = reader.GetString(0);
-                connection.Close();
-                if (newUsername == currentUsername)
-                {
-                    collision = true;
-                }
-            }
-            return collision;
-        }
-
-        public bool passwordCollision(int newPassword)
-        {
-            bool collision = false;
-            for (int i = 1; i <= counter; i++)
-            {
-                SqliteConnection connection = new SqliteConnection(dbName);
-                connection.Open();
-                SqliteCommand Command = connection.CreateCommand();
-
-                sql = "SELECT hashed_password FROM Users WHERE player_id ="+i+"";
-
-                Command.CommandText = sql;
-                SqliteDataReader reader = Command.ExecuteReader();
-                reader.Read();
-                int currentPassword = reader.GetInt32(0);
-                connection.Close();
-                if (newPassword == currentPassword)
-                {
-                    collision = true;
-                }
-            }
-            return collision;
+            return true;
         }
     }
 }
