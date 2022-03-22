@@ -108,6 +108,7 @@ namespace EducationExcavator{
 
         public int[] readSubjectScores(){
             int[] scores = new int[5];
+            int[] ids = new int[5];
             int i=0;
             SqliteConnection connection = new SqliteConnection(dbName);
             connection.Open();
@@ -117,12 +118,13 @@ namespace EducationExcavator{
             SqliteDataReader reader = Command.ExecuteReader();
             while(reader.Read()){
                 scores[i] = reader.GetInt32(0);
-                player_ids[i] = reader.GetInt32(1);
+                ids[i] = reader.GetInt32(1);
                 i++;
                 if(i >= 5){
                     break;
                 }
             }
+            player_ids = ids;
             connection.Close();
             return scores;
         }
